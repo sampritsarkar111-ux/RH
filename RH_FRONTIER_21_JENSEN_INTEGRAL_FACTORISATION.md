@@ -1,10 +1,10 @@
-# Riemann Hypothesis — Frontier 21: Exact Jensen-Integral Factorization Attempt
+# Riemann Hypothesis — Frontier 21: Exact Jensen-Integral Factorisation Attempt (corrected)
 
 Date: 2026-09-16
 
 ## 1. Objective
 
-Continue from Frontier 20 by attacking the remaining all-degree Jensen hyperbolicity statement directly, without reversing the Pólya–Schur multiplier operator.
+Continue from Frontier 20 by attacking the all-degree Jensen hyperbolicity statement directly.
 
 Let
 \[
@@ -12,119 +12,108 @@ Let
 \qquad
 M_m=\int_0^\infty \Phi(t)t^{2m}\,dt,
 \]
-where \(C>0\) is irrelevant to zero locations. Define
+with \(C>0\) irrelevant to zero locations, and define
 \[
 J_{d,n}(X)=\sum_{j=0}^d\binom dj\gamma_{n+j}X^j.
 \]
-
-The exact target is: prove \(J_{d,n}\) has only real zeros for every \(d,n\ge0\).
+The exact target is to prove \(J_{d,n}\) hyperbolic for every \(d,n\ge0\).
 
 ## 2. Exact integral representation
 
-Because the sum is finite, it can be moved through the integral:
+Because the sum is finite,
 \[
 \boxed{
 J_{d,n}(X)
-=C\int_0^\infty \Phi(t)t^{2n}
-G_{d,n}(Xt^2)\,dt,
+=C\int_0^\infty \Phi(t)t^{2n}G_{d,n}(Xt^2)\,dt,
 }
 \]
 where
 \[
 G_{d,n}(Y)=\sum_{j=0}^d\binom dj\frac{(n+j)!}{(2n+2j)!}Y^j.
 \]
-
 This identity is exact and contains no RH assumption.
 
-## 3. A genuine local zero-preservation fact
+## 3. Important correction to the previous version
 
-For fixed \(d,n\), the coefficient sequence
+The sequence
 \[
 a_m=\frac{m!}{(2m)!}
 \]
-has signed exponential generating function
+has a Pólya–Schur multiplier-sequence structure because its signed exponential generating function is \(\cos(\sqrt z)\). However, this **does not imply** that the shifted binomial polynomials
 \[
-\sum_{m\ge0}(-1)^ma_m\frac{z^m}{m!}=\cos(\sqrt z),
+G_{d,n}(Y)=\sum_{j=0}^d\binom dj a_{n+j}Y^j
 \]
-which is in the Laguerre–Pólya class. Therefore \((a_m)\) is a Pólya–Schur multiplier sequence.
+are real-rooted. Multiplier sequences preserve real-rootedness when applied diagonally to an already-real-rooted polynomial; they do not make arbitrary shifted binomial combinations real-rooted.
 
-Consequently each polynomial \(G_{d,n}\) has only real nonpositive zeros. Thus for each fixed \(t>0\), \(G_{d,n}(Xt^2)\) has only real nonpositive zeros.
-
-This is a rigorous pointwise statement about the integrand.
-
-## 4. The crucial missing implication
-
-The desired conclusion would be
+Indeed,
 \[
-\int_0^\infty w_n(t)G_{d,n}(Xt^2)\,dt
-\quad\text{is hyperbolic},
-\qquad
-w_n(t)=\Phi(t)t^{2n}>0.
+G_{3,0}(Y)=1+\frac32Y+\frac14Y^2+\frac1{60}Y^3
 \]
-
-But pointwise real-rootedness of a family of polynomials does **not** by itself imply real-rootedness of its positive integral. The roots of \(G_{d,n}(Xt^2)\) scale as \(r_k/t^2\), so they move with \(t\). There is no common fixed zero set.
-
-Therefore a proof requires an additional total-positivity, interlacing, or variation-diminishing theorem for the specific scale-mixture operator
+has discriminant
 \[
-\mathcal I_n[P](X)=\int_0^\infty \Phi(t)t^{2n}P(Xt^2)\,dt.
+-\frac{67}{1600}<0,
 \]
+so it has a nonreal conjugate pair. This directly invalidates the previous pointwise-hyperbolicity assertion.
 
-## 5. Exact coefficient matrix
+## 4. Universal positive-mixture preservation is also impossible
 
-Writing \(Y=t^2\), the operator has moments
+Consider
 \[
-\mathcal I_n[Y^j]=\frac{M_{n+j}}{M_n}
+\mathcal I_n[P](X)=\int_0^\infty\Phi(t)t^{2n}P(Xt^2)dt.
 \]
-(up to the harmless normalizing factor). Hence its coefficient matrix is a Hankel moment matrix built from \(M_{n+j}\).
-
-For all-degree Jensen preservation, this Hankel operator would need a much stronger property than ordinary moment positivity: it must preserve real-rootedness of the particular Pólya–Schur Jensen family. A sufficient universal condition would be total positivity of all relevant minors of the moment kernel. Establishing that condition for the Riemann \(\Phi\)-kernel is essentially the unresolved RH-scale step.
-
-## 6. Why the naive positive-mixture argument fails
-
-Suppose \(P_t(X)=\prod_k(X-r_k/t^2)\) is real-rooted for every \(t\). Even with positive \(w(t)\), the integral \(\int w(t)P_t(X)dt\) can have nonreal zeros because positive averaging does not generally preserve hyperbolicity when the roots move independently.
-
-Thus the following implication is invalid without a separate theorem:
+For the hyperbolic polynomial \(P(Y)=(Y-1)^2\), writing
 \[
-P_t\text{ hyperbolic for all }t
-\nRightarrow
-\int w(t)P_t\,dt\text{ hyperbolic}.
+m_k=\int_0^\infty t^{2k}\Phi(t)t^{2n}dt,
 \]
-
-This is the precise obstruction that prevents turning the exact integral representation into a proof.
-
-## 7. A sharper sufficient theorem to target
-
-A mathematically clean route would be to prove the following specialized statement.
-
-**Scale-mixture Jensen theorem (target).** For the Riemann kernel \(\Phi\), for every \(d,n\ge0\), the operator
+we obtain
 \[
-P(Y)\mapsto \int_0^\infty \Phi(t)t^{2n}P(Yt^2)dt
+\mathcal I_n[P](X)=m_2X^2-2m_1X+m_0
 \]
-preserves hyperbolicity for every polynomial \(P\) in the finite Jensen family generated by \(a_m=m!/(2m)!\).
-
-A stronger but potentially more tractable sufficient condition is that the kernel of this integral operator is a strictly totally positive kernel in the variables \((Y,t^2)\). If proved, standard variation-diminishing theory could supply the missing zero-preservation step.
-
-No such total-positivity theorem is asserted here.
-
-## 8. Connection with the classical RH equivalence
-
-The literature identifies RH with the Laguerre–Pólya property of the Riemann \(\Xi\)-function and equivalently with hyperbolicity of all associated Jensen polynomials. Therefore proving the target theorem for every \(d,n\) would close RH, while proving only fixed-degree or asymptotic-in-shift results does not.
-
-## 9. Attempted shortcut through the heat flow
-
-The de Bruijn–Newman formulation gives a one-parameter family
+with discriminant
 \[
-H_\lambda(z)=\int_{-\infty}^{\infty}e^{\lambda t^2}\Phi(t)e^{izt}dt.
+4(m_1^2-m_0m_2)<0
 \]
-Real-rootedness is known for sufficiently large \(\lambda\), and the RH is equivalent to the relevant threshold being at most zero. A direct backward-propagation proof from a positive \(\lambda\) to \(0\) would therefore solve RH. However, zero separation under the backward heat flow is precisely the difficult global issue; no monotonicity argument that reaches \(0\) is established here.
+by strict Cauchy–Schwarz for the non-degenerate Riemann measure. Thus no theorem asserting arbitrary-polynomial hyperbolicity preservation by this operator can close RH.
 
-## 10. Status
+## 5. Exact low-degree Jensen constraints
 
-This frontier does **not** prove RH. It does, however, convert the remaining Jensen problem into one exact analytic operator question:
+For \(d=2\),
+\[
+J_{2,n}(X)=M_n+\frac{M_{n+1}}{2n+1}X+\frac{M_{n+2}}{2(2n+1)(2n+3)}X^2,
+\]
+and hyperbolicity is exactly
 \[
 \boxed{
-\text{Prove hyperbolicity preservation of the Riemann scale-mixture operator on the full Jensen family.}
+M_{n+1}^2\ge\frac{2n+1}{2n+3}M_nM_{n+2}.
 }
 \]
 
-Any future proof must establish this preservation theorem (or an equivalent all-degree total-positivity statement) rather than relying on pointwise real-rootedness, positive averaging, finite computation, or reversal of a multiplier sequence.
+For \(d=3\), with \(A=M_n,B=M_{n+1},C=M_{n+2},D=M_{n+3}\),
+\[
+J_{3,n}(X)=A+\frac{3B}{2(2n+1)}X+\frac{3C}{4(2n+1)(2n+3)}X^2+\frac{D}{4(2n+1)(2n+3)(2n+5)}X^3.
+\]
+Its discriminant equals
+\[
+-\frac{27Q_{3,n}}{64(2n+1)^4(2n+3)^3(2n+5)^2},
+\]
+where
+\[
+\begin{aligned}
+Q_{3,n}={}&(32n^3+176n^2+312n+180)B^3D\\
+&-(24n^3+156n^2+330n+225)B^2C^2\\
+&+(32n^3+176n^2+280n+100)AC^3\\
+&-(96n^3+432n^2+552n+180)ABCD\\
+&+(32n^3+80n^2+56n+12)A^2D^2.
+\end{aligned}
+\]
+Hence degree 3 requires \(Q_{3,n}\le0\).
+
+## 6. Correct remaining route
+
+The proof must now attack the actual Jensen family directly. The natural next step is to derive the Hermite matrices and higher discriminants in terms of the moments \(M_n\), then substitute the explicit Riemann theta-kernel representation and seek a non-circular determinant factorisation.
+
+A Vandermonde-square or Andréief identity may be useful, but it must be derived from the actual determinant. It cannot be assumed merely because moment determinants often admit such formulas.
+
+## 7. Status
+
+This corrected frontier does not prove RH. It removes two invalid shortcuts and isolates the exact all-degree algebraic/analytic problem. The Clay Mathematics Institute currently lists RH as unsolved.
