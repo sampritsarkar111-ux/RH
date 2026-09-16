@@ -22,13 +22,13 @@ G_{3,0}(Y)=1+\frac32Y+\frac14Y^2+\frac1{60}Y^3.
 \]
 Its cubic discriminant is
 \[
-\operatorname{Disc}(G_{3,0})=-\frac{1809}{160000}<0,
+\operatorname{Disc}(G_{3,0})=-\frac{67}{1600}<0,
 \]
 so it has exactly one real zero and one nonreal conjugate pair. Numerically,
 \[
 Y\approx-0.7574628319,
 \qquad
-Y\approx-7.1212685841\pm5.33847742499i.
+Y\approx-7.1212685841\pm5.3384774250i.
 \]
 Therefore the pointwise-hyperbolicity premise in Frontier 21 fails already at \((d,n)=(3,0)\).
 
@@ -138,4 +138,4 @@ This corrected Frontier 22 is **not a proof of RH**. It removes two invalid shor
 - universal hyperbolicity preservation by the positive scale-mixture operator;
 - the incorrect inference from Pólya–Schur multiplier status to hyperbolicity of the shifted binomial polynomials \(G_{d,n}\).
 
-The RH remains open in the current research state. The Clay Mathematics Institute currently lists RH as an unsolved Millennium problem. The exact all-degree Jensen/Laguerre–Pólya closure remains the central unresolved target. 
+The RH remains open in the current research state. The Clay Mathematics Institute currently lists RH as an unsolved Millennium problem. The exact all-degree Jensen/Laguerre–Pólya closure remains the central unresolved target.
