@@ -4,10 +4,10 @@ Date: 2026-09-16
 
 ## Starting point
 
-Frontier 10 correctly identifies the Jensen-polynomial bottleneck. With
+Frontier 10 identifies the Jensen-polynomial bottleneck. With
 
 \[
-G(z)=8\xi\!\left(\frac12+z\right)=\n\sum_{n\ge0}\frac{\gamma(n)}{n!}z^{2n},
+G(z)=8\xi\!\left(\frac12+z\right)=\sum_{n\ge0}\frac{\gamma(n)}{n!}z^{2n},
 \qquad
 \gamma(n)=8\frac{n!}{(2n)!}M_n,
 \]
