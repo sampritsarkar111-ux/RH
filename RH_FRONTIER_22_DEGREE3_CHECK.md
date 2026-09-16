@@ -40,8 +40,12 @@ Sanity check at \(n=0\) with the degenerate moment pattern \(A=1,B=r,C=r^2,D=r^3
 \[
 Q_{3,0}=67r^6>0,
 \]
-so the corresponding cubic has negative discriminant. This agrees with the direct test of
+so the corresponding cubic has negative discriminant. In particular, at \(r=1\),
 \[
-1+\frac32Y+\frac14Y^2+\frac1{60}Y^3,
+G_{3,0}(Y)=1+\frac32Y+\frac14Y^2+\frac1{60}Y^3
 \]
-which has one real root and one complex-conjugate pair. This sanity check also exposes why the earlier Pólya–Schur inference about \(G_{3,0}\) was invalid.
+has
+\[
+\operatorname{Disc}(G_{3,0})=-\frac{67}{1600}<0.
+\]
+This sanity check exposes why the earlier Pólya–Schur inference about \(G_{3,0}\) was invalid.
