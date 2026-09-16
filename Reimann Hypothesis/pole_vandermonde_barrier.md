@@ -1,4 +1,10 @@
-# Pole–Vandermonde Barrier (PVB): a new fixed-shift reduction
+# Pole–Vandermonde decomposition: a fixed-shift reduction, with a critical obstruction
+
+## Status
+
+This note records a useful algebraic duality, but **not a positivity proof**. The initial idea that a positive-pole partial fraction expansion would automatically give a positive Vandermonde determinant is false in the Xi setting: partial-fraction residues of a product of positive linear factors need not all be positive, and the determinant sign also depends on pole ordering.
+
+The failed positivity claim is deliberately retained here as a falsification result so it is not accidentally reused as a proof step.
 
 ## 1. Exact algebraic duality
 
@@ -12,85 +18,61 @@ Define `h_n` by
 
 `1/E(-z)=sum_{n>=0} h_n z^n`.
 
-For the consecutive Toeplitz minor
-
-`D_{r,k}=det(e_{k+j-i})_{i,j=0}^{r-1} * a_0^r`,
-
-Jacobi–Trudi duality gives the exact identity
+Then the Jacobi–Trudi identity gives the exact duality
 
 `D_{r,k}/a_0^r = det(h_{r+j-i})_{i,j=0}^{k-1}`.
 
-Thus a fixed shift `k` changes the problem from an `r x r` determinant to a `k x k` determinant while the index `r` moves into the coefficients `h_n`.
+Thus a fixed shift `k` converts the original `r x r` determinant into a `k x k` determinant whose index `r` appears in the reciprocal coefficients.
 
-This is not a numerical approximation and does not use RH.
+This identity is unconditional and can be useful for attacking the small-shift/large-r corner.
 
-## 2. Pole model
+## 2. The tempting pole argument and why it fails
 
-Suppose, for a moment, that the reciprocal function has a finite positive-pole model
+If, hypothetically,
 
-`H(z)=1/E(-z) = regular_part + sum_{j=1}^k c_j/(1-q_j z)`,
+`h_n = sum_{j=1}^k c_j q_j^n`,
 
-with
+then Cauchy–Binet/Vandermonde factorization gives
 
-`c_j>0`, `q_j>0`, and `q_1>q_2>...>q_k>0`.
+`det(h_{r+j-i}) = (prod_j c_j q_j^r) det(q_j^{-i}) det(q_j^j)`.
 
-Then the pole contribution to the coefficients is
+The magnitude contains the Vandermonde-square factor
 
-`h_n^(k)=sum_{j=1}^k c_j q_j^n`.
+`prod_{i<j} ((q_i-q_j)^2/(q_i q_j))`,
 
-For the dual determinant,
+but the sign is not automatically positive. More importantly, for a product
 
-`M_{r,k}=det(h_{r+j-i}^(k))_{i,j=0}^{k-1}`,
+`E(-z)=prod_j (1-alpha_j z)`,
 
-factorization through the Vandermonde matrices gives
+the partial-fraction residues of `1/E(-z)` generally alternate in sign. Therefore “positive poles + positive residues” is not supplied by RH itself.
 
-`M_{r,k} = (prod_j c_j q_j^r) det(q_j^{-i}) det(q_j^j) > 0`.
+A direct numerical falsification uses positive distinct poles `q=(1/2,1/3)` with positive residues `c=(1,1.1)`: the determinant for `k=2` is negative, while the unsigned Vandermonde product is positive. Hence the earlier positivity statement was too strong.
 
-The two Vandermonde determinants have opposite signs under the same ordering, so their product is positive. Equivalently,
+## 3. What survives as a research tool
 
-`M_{r,k} = (prod_j c_j q_j^r) prod_{1<=i<j<=k} ((q_i-q_j)^2/(q_i q_j)) > 0`.
+The exact duality remains valuable:
 
-This is the **Pole–Vandermonde Barrier**: positivity is forced when the first `k` dominant poles are positive, simple, separated, and have positive residues, provided the remaining analytic tail is small enough in the determinant norm.
+`D_{r,k}>0  <=>  det(h_{r+j-i})_{i,j=0}^{k-1}>0`.
 
-## 3. Application to Xi
+For fixed `k`, this reduces an arbitrarily large determinant order `r` to fixed matrix size `k`. The new problem is to exploit the **special algebraic structure of the Xi reciprocal** rather than generic positive-pole residues.
 
-Take
+Potential valid routes include:
 
-`G(z)=1/8 xi(1/2+sqrt(z)/2)=sum a_n z^n`.
+1. prove a sign-regularity theorem for the signed residues of `1/G(-z)`;
+2. use grouped residues rather than individual poles, with a provable positive grouped kernel;
+3. derive asymptotics of `h_n` directly from the nearest poles without assuming their locations beyond what is unconditionally known;
+4. combine this fixed-shift reduction with the already-certified large-shift saddle-point region.
 
-A zero `rho` of `G` becomes a pole of `1/G(-z)`. If the corresponding zero is on the critical line, `rho=1/2+i gamma`, then the associated pole location in the normalized variable is positive and proportional to `gamma^{-2}`.
+## 4. Required non-circularity condition
 
-Therefore a finite verified block of critical-line zeros supplies a finite positive-pole core. The unresolved high-zero part becomes a remainder term.
+Any pole argument must never replace the unknown statement “all zeros lie on the critical line” by an equivalent assertion about positive poles. If an estimate requires every pole of `1/G(-z)` to be positive, it has simply assumed RH.
 
-The research problem is then split into two exact inequalities:
+## 5. Immediate next target
 
-1. **Core positivity:** the first `k` verified poles contribute the positive Vandermonde product above.
-2. **Tail domination:** the contribution of all remaining poles/analytic remainder is smaller than the positive core, in a norm strong enough to preserve the determinant sign.
+The rigorous target is now a **signed-residue variation bound** for the reciprocal Xi coefficients:
 
-No off-line zero may be assumed away. Any tail estimate must be derived from unconditional zero-counting/complex-analytic bounds.
+`det(h_{r+j-i}) = Core_{r,k} + Error_{r,k}`,
 
-## 4. Why this is useful
+where `Core` is built from an explicitly unconditional finite subset of known zeros/poles and `|Error| < Core` is proved without assuming the location of the remaining zeros.
 
-This framework attacks the complementary wedge from the opposite direction to the 2026 cubic-tail result. Michalowski proves positivity when the shift is enormous relative to the rank. PVB instead keeps the shift fixed and lets the rank grow, converting the growing determinant into a fixed-size determinant whose asymptotics are controlled by dominant poles.
-
-The two mechanisms suggest a possible two-sided covering strategy:
-
-- **pole-dominant regime:** fixed or moderately growing `k`, large `r`;
-- **saddle-point regime:** `k >= 10^18 r^3`;
-- **finite bridge region:** an explicit compact region in `(r,k)` checked by rigorous interval arithmetic.
-
-A complete RH proof would require the bridge to cover every remaining `(r,k)` and, crucially, an unconditional tail bound that does not encode RH.
-
-## 5. Important limitation
-
-PVB is a new reduction/barrier mechanism, not yet a proof of RH. The difficult step is the uniform tail-domination theorem. If that estimate secretly assumes that all remaining zeros are on the critical line, the argument is circular and must be rejected.
-
-## 6. Immediate test target
-
-For each fixed `k`, prove an explicit inequality of the form
-
-`||R_{r,k}|| <= eta_{r,k} Core_{r,k}` with `eta_{r,k}<1`,
-
-where `R_{r,k}` is the determinant perturbation induced by the unverified zero tail. The strongest useful version is uniform in `r` for `1 <= k <= K`, followed by growth of `K`.
-
-This turns the vague phrase “the verified zeros dominate” into a concrete determinant-stability inequality.
+Until such a bound is established, this framework is a reduction only, not a closure of RH.
