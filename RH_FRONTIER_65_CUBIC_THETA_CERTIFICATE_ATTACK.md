@@ -27,8 +27,8 @@ w=\frac{q_{n+3}}{q_n}-3\frac{q_{n+1}q_{n+2}}{q_n^2}+2\left(\frac{q_{n+1}}{q_n}\r
 \]
 we have
 \[
-B_n=q_n^2(w^2+4v^3),\qquad
-\Delta_3=\frac{9q_n^2}{q_{n+3}^4}\widetilde Q_3,
+B_n=q_n^4(w^2+4v^3),\qquad
+\Delta_3=\frac{9q_n^4}{q_{n+3}^4}\widetilde Q_3,
 \quad
 \widetilde Q_3=-3(w^2+4v^3).
 \]
