@@ -2,162 +2,140 @@
 
 Date: 2026-09-16
 
-## 1. Correction to Frontier 21
+## 1. Critical correction to Frontiers 21–22
 
-Frontier 21 identified hyperbolicity preservation by the scale-mixture operator
-\[
-\mathcal I_n[P](X)=\int_0^\infty \Phi(t)t^{2n}P(Xt^2)\,dt
-\]
-as a possible sufficient theorem. That target was too strong: for any non-degenerate positive measure it is false even on a simple quadratic hyperbolic polynomial.
-
-This is an important correction. The Riemann problem must exploit the special Jensen family; one cannot prove RH by establishing arbitrary-polynomial preservation for this moment-mixture operator.
-
-## 2. Exact counterexample to universal hyperbolicity preservation
-
-Let
-\[
-\mu(dt)=\Phi(t)t^{2n}dt,
-\qquad m_k=\int_0^\infty t^{2k}\,d\mu(t).
-\]
-Take the hyperbolic polynomial
-\[
-P(Y)=(Y-1)^2.
-\]
-Then
-\[
-\mathcal I_n[P](X)=m_2X^2-2m_1X+m_0.
-\]
-Its discriminant is
-\[
-\Delta=4(m_1^2-m_0m_2).
-\]
-By Cauchy–Schwarz,
-\[
-m_1^2\le m_0m_2,
-\]
-with strict inequality whenever the measure is not concentrated at a single value of \(t^2\). The Riemann kernel is a genuine continuous, non-degenerate measure, so
-\[
-\boxed{\Delta<0}.
-\]
-Therefore \(\mathcal I_n\) does **not** preserve hyperbolicity on all real-rooted polynomials.
-
-Hence the following proposed universal implication is false:
-\[
-P\in\mathbb R[X]\text{ hyperbolic}
-\Longrightarrow
-\mathcal I_n[P]\text{ hyperbolic}.
-\]
-
-## 3. The RH-relevant operator is much narrower
-
-The actual object is not arbitrary \(P\), but
-\[
-G_{d,n}(Y)=
-\sum_{j=0}^d\binom dj\frac{(n+j)!}{(2n+2j)!}Y^j,
-\]
-and
-\[
-J_{d,n}(X)=C\int_0^\infty\Phi(t)t^{2n}G_{d,n}(Xt^2)\,dt.
-\]
-The coefficient sequence
+A previous statement claimed that because
 \[
 a_m=\frac{m!}{(2m)!}
 \]
-has signed EGF \(\cos(\sqrt z)\), giving the Pólya–Schur real-rootedness of each fixed \(G_{d,n}\). The remaining question is whether this **specific coupled family** remains hyperbolic after the Riemann moment mixture.
-
-Thus the correct target is a structured Jensen-preservation theorem, not a universal positive-kernel preservation theorem.
-
-## 4. Degree 2 recovered as an exact moment inequality
-
-For \(d=2\), after removing a positive constant,
+is a Pólya–Schur multiplier sequence, the finite polynomials
 \[
-J_{2,n}(X)
-= M_n+
-\frac{M_{n+1}}{2n+1}X+
-\frac{M_{n+2}}{2(2n+1)(2n+3)}X^2.
+G_{d,n}(Y)=\sum_{j=0}^d\binom dj a_{n+j}Y^j
 \]
-Its discriminant condition is exactly
+must be hyperbolic. That implication is **false**. Multiplier-sequence preservation applies to applying the diagonal multiplier to an already-real-rooted polynomial; it does not assert that every shifted binomial polynomial built from the multiplier sequence is itself real-rooted.
+
+This correction is decisive and has been checked directly.
+
+For \(d=3,n=0\),
+\[
+G_{3,0}(Y)=1+\frac32Y+\frac14Y^2+\frac1{60}Y^3.
+\]
+Its cubic discriminant is
+\[
+\operatorname{Disc}(G_{3,0})=-\frac{1809}{160000}<0,
+\]
+so it has exactly one real zero and one nonreal conjugate pair. Numerically,
+\[
+Y\approx-0.7574628319,
+\qquad
+Y\approx-7.1212685841\pm5.33847742499i.
+\]
+Therefore the pointwise-hyperbolicity premise in Frontier 21 fails already at \((d,n)=(3,0)\).
+
+## 2. What remains exact
+
+The coefficient factorization remains valid:
+\[
+J_{d,n}(X)
+=C\int_0^\infty\Phi(t)t^{2n}G_{d,n}(Xt^2)\,dt,
+\]
+with
+\[
+G_{d,n}(Y)=\sum_{j=0}^d\binom dj\frac{(n+j)!}{(2n+2j)!}Y^j.
+\]
+This identity is exact and RH-independent.
+
+However, neither \(G_{d,n}\) nor its positive scale mixture can be declared hyperbolic from Pólya–Schur theory.
+
+## 3. Exact universal-operator obstruction remains valid
+
+Even independently of the preceding correction, the scale-mixture operator
+\[
+\mathcal I_n[P](X)=\int_0^\infty\Phi(t)t^{2n}P(Xt^2)dt
+\]
+does not preserve arbitrary hyperbolicity. For
+\[
+P(Y)=(Y-1)^2,
+\]
+\[
+\mathcal I_n[P](X)=m_2X^2-2m_1X+m_0,
+\]
+with discriminant
+\[
+4(m_1^2-m_0m_2)<0
+\]
+for a non-degenerate positive measure, by strict Cauchy–Schwarz.
+
+## 4. Correct degree-2 statement
+
+For the actual Riemann Jensen polynomial,
+\[
+J_{2,n}(X)=
+M_n+\frac{M_{n+1}}{2n+1}X+
+\frac{M_{n+2}}{2(2n+1)(2n+3)}X^2,
+\]
+and hyperbolicity is exactly
 \[
 \boxed{
 M_{n+1}^2\ge
 \frac{2n+1}{2n+3}M_nM_{n+2}.
 }
 \]
-This is weaker than ordinary moment log-convexity in the opposite direction and is therefore a genuinely kernel-specific inequality. It is a low-degree member of the all-degree Jensen hierarchy.
 
-## 5. Degree 3: exact next obstruction
+## 5. Correct degree-3 algebraic target
 
-Write
+Let
 \[
 A=M_n,\quad B=M_{n+1},\quad C=M_{n+2},\quad D=M_{n+3}.
 \]
-Up to an irrelevant positive scalar,
+Then
 \[
 J_{3,n}(X)=
-A+
-\frac{3B}{2(2n+1)}X+
+A+\frac{3B}{2(2n+1)}X+
 \frac{3C}{4(2n+1)(2n+3)}X^2+
 \frac{D}{4(2n+1)(2n+3)(2n+5)}X^3.
 \]
-For a real cubic with positive leading coefficient, real-rootedness is equivalent to nonnegative discriminant. Direct expansion gives
+Its discriminant is
 \[
 \operatorname{Disc}(J_{3,n})
-=-\frac{27}{64(2n+1)^4(2n+3)^3(2n+5)^2}\,Q_{3,n}(A,B,C,D),
+=-\frac{27}{64(2n+1)^4(2n+3)^3(2n+5)^2}Q_{3,n},
 \]
 where
 \[
 \begin{aligned}
-Q_{3,n}={}&
-(32n^3+176n^2+312n+180)B^3D\\
+Q_{3,n}={}&(32n^3+176n^2+312n+180)B^3D\\
 &-(24n^3+156n^2+330n+225)B^2C^2\\
 &+(32n^3+176n^2+280n+100)AC^3\\
 &-(96n^3+432n^2+552n+180)ABCD\\
 &+(32n^3+80n^2+56n+12)A^2D^2.
 \end{aligned}
 \]
-Thus the degree-3 Jensen condition is the explicit inequality
+Thus degree-3 hyperbolicity requires
 \[
-\boxed{Q_{3,n}(A,B,C,D)\le 0.}
+\boxed{Q_{3,n}\le0.}
 \]
-This is a genuinely new higher-order moment constraint generated by the factorial-normalized Jensen family.
 
-## 6. Why generic moment inequalities are insufficient
+## 6. New, sharper research target
 
-The ordinary Stieltjes/Hankel moment inequality gives
+The previous proposed proof route cannot work as stated. The correct next target is to derive the **actual Hermite/Jensen determinant hierarchy** directly from
 \[
-B^2\le AC,
-\qquad
-C^2\le BD,
+\gamma_m=C\frac{m!}{(2m)!}M_m
 \]
-whereas degree 2 requires the reverse-type bound
-\[
-B^2\ge \frac{2n+1}{2n+3}AC.
-\]
-Therefore the RH condition is a narrow quantitative band between generic moment log-convexity and the stronger Jensen constraints.
+and then use the explicit Riemann theta-kernel representation of \(M_m\).
 
-For degree 3, the polynomial \(Q_{3,n}\) couples all four consecutive moments. Separate pairwise log-convexity inequalities cannot simply replace this condition.
+The required work is:
 
-## 7. New research direction: determinant hierarchy
+1. derive exact Hermite matrices for \(J_{d,n}\);
+2. express their minors as multilinear moment determinants;
+3. apply Andréief/Cauchy–Binet only where the determinant structure actually permits it;
+4. determine whether the resulting expressions have a nonnegative factorization that follows from the explicit theta kernel;
+5. prove the all-degree statement without importing RH through an equivalent condition.
 
-Instead of asking for preservation of every hyperbolic polynomial, construct the exact Hermite matrices of \(J_{d,n}\). For each \(d\), their principal minors are polynomial expressions in
-\[
-M_n,M_{n+1},\ldots,M_{n+2d-2}.
-\]
-The next serious target is:
+## 7. Status
 
-1. derive these minors symbolically for small \(d\);
-2. substitute
-\[
-M_k=\int_0^\infty\Phi(t)t^{2k}\,dt;
-\]
-3. use Andréief/Cauchy–Binet where applicable to convert determinants into multiple integrals;
-4. determine whether the resulting integrands have a provably nonnegative factorization from the explicit Riemann theta kernel;
-5. generalize to all \(d,n\) without assuming RH.
+This corrected Frontier 22 is **not a proof of RH**. It removes two invalid shortcuts:
 
-A Vandermonde-square factor is promising but must be derived, not postulated.
+- universal hyperbolicity preservation by the positive scale-mixture operator;
+- the incorrect inference from Pólya–Schur multiplier status to hyperbolicity of the shifted binomial polynomials \(G_{d,n}\).
 
-## 8. Status
-
-This frontier does **not** prove RH. It establishes a rigorous correction to the previous route and narrows the remaining problem: universal scale-mixture preservation is impossible, so any successful proof must exploit the special factorial-weighted Jensen family at every degree.
-
-No numerical evidence is promoted to proof, and no multiplier-sequence inversion is used.
+The RH remains open in the current research state. The Clay Mathematics Institute currently lists RH as an unsolved Millennium problem. The exact all-degree Jensen/Laguerre–Pólya closure remains the central unresolved target. 
