@@ -133,11 +133,11 @@ The two roots are
 }
 \]
 
-Since `A_h>0`, the exact cubic condition is therefore
+Since `A_h>0`, the exact cubic condition is
 
 \[
 \boxed{
-J_{3,n}\text{ hyperbolic}
+J_{3,n}\text{ is hyperbolic}
 \iff
 0\le q<\frac2h
 \quad\text{and}\quad
@@ -145,17 +145,19 @@ J_{3,n}\text{ hyperbolic}
 }
 \]
 
-provided the underlying positive-moment normalization is nondegenerate. At the endpoint `q=2/h`, the quadratic has a double minimum, but direct substitution gives
+with the endpoint `q=2/h` handled separately. At that endpoint,
 
 \[
-Q_h\left(\frac2h,t\right)>0
+Q_h\left(\frac2h,t\right)=\frac{h+2}{h^2}(h^2t-8)^2\ge0,
 \]
 
-for every real `t` at the coalesced value, so the endpoint itself is excluded. Thus cubic hyperbolicity forces the **strict** variance inequality
+so equality `Q_h=0` occurs exactly at
 
 \[
-\boxed{q<\frac2{2n+1}.}
+\boxed{q=\frac2h,\qquad t=\frac8{h^2}.}
 \]
+
+Thus the cubic gate adds an exact skewness compatibility condition; the variance boundary itself is touched only at this single tangency value.
 
 ## 4. Relation to the degree-2 gate
 
@@ -165,7 +167,7 @@ Frontier 28 established the degree-2 condition
 q\le\frac2h.
 \]
 
-Frontier 33 shows that degree 3 is strictly stronger: it does not merely impose a sharper variance number; it requires the third standardized central moment `t` to lie in an explicit curved interval depending on `q` and `h`.
+Frontier 33 shows that degree 3 is genuinely stronger: for `q<2/h`, it requires the third standardized central moment `t` to lie in an explicit curved interval depending on `q` and `h`. At the boundary `q=2/h`, only the tangency value `t=8/h^2` survives the cubic discriminant condition.
 
 Therefore an all-degree proof cannot be reduced to variance control. It must control a hierarchy of higher standardized moments/cumulants, or bypass these coordinates by a direct positive Gram/Hermite factorization.
 
@@ -177,9 +179,13 @@ At `q=2/h`, Frontier 31 used the positive two-point law
 Y=\mu\left(1\pm\sqrt{2/h}\right)
 \]
 
-with equal weights. It has `t=0`, saturates the degree-2 bound, and fails the cubic condition because `Q_h(2/h,0)>0`.
+with equal weights. It has `t=0`, saturates the degree-2 bound, and fails the cubic condition because
 
-Frontier 33 strengthens the interpretation: the entire cubic feasible set lies strictly inside the degree-2 variance boundary. The missing information is not a small correction to the variance bound; it is a genuine skewness constraint.
+\[
+Q_h\left(\frac2h,0\right)=\frac{64(h+2)}{h^2}>0.
+\]
+
+Frontier 33 strengthens the interpretation: variance saturation alone is insufficient; the cubic condition also specifies the required skewness at the saturation point.
 
 ## 6. What this does and does not prove
 
@@ -189,7 +195,7 @@ Frontier 33 strengthens the interpretation: the entire cubic feasible set lies s
 2. Exact cubic discriminant reduction to `Q_h(q,t)`.
 3. Exact factorization of the discriminant of `Q_h` as a quadratic in `t`.
 4. Exact closed-form skewness boundaries `t_\pm(h,q)`.
-5. Exact statement that cubic hyperbolicity requires `q<2/h` plus the stated skewness interval.
+5. Exact description of the cubic feasibility region in `(q,t)`, including its boundary tangency.
 
 ### Still unresolved
 
@@ -211,7 +217,7 @@ The next nontrivial target is now sharply formulated:
 \boxed{
 \text{derive theta-specific inequalities forcing}
 \quad
- t_-(2n+1,q_n)\le t_n\le t_+(2n+1,q_n)
+Q_{2n+1}(q_n,t_n)\le0
 \quad\forall n,
 }
 \]
