@@ -6,151 +6,137 @@ Date: 2026-09-16
 
 Attempt a genuinely global proof of the Riemann Hypothesis through the canonical Pólya–Jensen sequence, rather than adding another finite numerical check.
 
-The Riemann Hypothesis (RH) is equivalent to the assertion that every nontrivial zero of the Riemann zeta function has real part 1/2. The current public status remains **unsolved**.
+The Riemann Hypothesis (RH) is currently still open.
 
 ## 1. Canonical entire function and Jensen sequence
 
 Let
-
 \[
 \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
 \qquad
 \Xi(t)=\xi(1/2+it).
 \]
-
 Write
-
 \[
 \Xi(t)=\sum_{n\ge0}(-1)^n\frac{M_n}{(2n)!}t^{2n}.
 \]
-
 Then
-
 \[
 8\xi(1/2+z)=\sum_{n\ge0}\frac{\gamma_n}{n!}z^{2n},
 \qquad
 \boxed{\gamma_n=8\frac{n!}{(2n)!}M_n}.
 \]
-
 The canonical Jensen polynomials are
-
 \[
 J_{d,n}(X)=\sum_{j=0}^d\binom dj\gamma_{n+j}X^j.
 \]
-
-A standard Pólya–Jensen criterion gives RH iff all these Jensen polynomials are hyperbolic.
+Pólya–Jensen gives the exact RH equivalence: all these polynomials must be hyperbolic for every degree and shift.
 
 ## 2. Exact coefficient transform
 
-The factorial factor admits the identity
-
+Set
 \[
-\frac{n!}{(2n)!}=\frac{1}{4^n(1/2)_n},
+a_n=\frac{n!}{(2n)!}=\frac{1}{4^n(1/2)_n}.
 \]
-
-hence
-
+Then
 \[
-\boxed{\gamma_n=\frac{8M_n}{4^n(1/2)_n}}.
+\gamma_n=8a_nM_n.
 \]
-
-This is the central transform. It is not legitimate to replace \(\gamma_n\) by \(M_n\) in Jensen polynomials.
-
-For the quadratic Jensen polynomial, direct algebra gives
-
+The quadratic condition is
 \[
 \gamma_{n+1}^2\ge\gamma_n\gamma_{n+2}
 \iff
 \boxed{M_{n+1}^2\ge\frac{2n+1}{2n+3}M_nM_{n+2}}.
 \]
-
-Thus the factorial transform changes the moment inequality by the exact factor \((2n+1)/(2n+3)\).
-
-## 3. New structural attack: represent the transform as an integral operator
-
-The beta identity
-
+Also
 \[
-B(n+1,n+1)=\frac{n!^2}{(2n+1)!}
+\frac{a_{n+1}^2}{a_na_{n+2}}=\frac{2n+3}{2n+1}>1.
 \]
 
-implies
+## 3. Beta-integral representation
 
+The beta identity gives
 \[
 \frac{n!}{(2n)!}
 =\frac{2n+1}{n!}\int_0^1[x(1-x)]^n\,dx.
 \]
-
-Therefore, if \(M_n=\int_0^\infty u^n\,d\mu(u)\) for the relevant theta-derived positive measure (with the exact normalization fixed before use), then formally
-
+Thus, for a positive moment representation \(M_n=\int u^n\,d\mu(u)\), one obtains formally
 \[
 \gamma_n
 =8\frac{2n+1}{n!}
-\int_0^1\int_0^\infty [u x(1-x)]^n\,d\mu(u)\,dx.
+\int_0^1\int_0^\infty[ux(1-x)]^n\,d\mu(u)\,dx.
 \]
+The prefactor depends on \(n\), so this does not turn \(\gamma_n\) into an ordinary fixed positive moment sequence. Hence Stieltjes positivity alone cannot close the Jensen problem.
 
-This exposes the precise obstruction: the factor \((2n+1)/n!\) depends on \(n\), so this is **not** a positive-measure representation of \(\gamma_n\) by itself. Consequently, ordinary Stieltjes moment theory cannot simply be applied to \(\gamma_n\).
+## 4. New exact multiplier-sequence result
 
-## 4. Attempted multiplier-sequence closure
+There is, however, a useful structural fact about the factorial multiplier itself.
 
-A natural next possibility is to regard
-
+Its exponential generating function is
 \[
-a_n=\frac{n!}{(2n)!}
+\sum_{n=0}^{\infty}a_n\frac{x^n}{n!}
+=\sum_{n=0}^{\infty}\frac{x^n}{(2n)!}
+=\cosh(\sqrt{x}).
 \]
-
-as a diagonal coefficient multiplier and ask whether the associated multiplier operator preserves the Laguerre–Pólya class on the even subspace.
-
-For a universal proof, one would need a theorem of the form
-
+Equivalently, after the even-variable substitution \(x=z^2\), this is \(\cosh z\), an entire Laguerre–Pólya function with only real zeros after the standard imaginary-axis sign convention. More directly for the multiplier-sequence test, use the signed sequence \((-1)^na_n\), whose exponential generating function is
 \[
-F(z)=\sum_{n\ge0}\frac{M_n}{(2n)!}z^{2n}\in\mathcal{LP}
-\quad\Longrightarrow\quad
-\sum_{n\ge0}a_nM_n z^{2n}\in\mathcal{LP},
+\sum_{n=0}^{\infty}(-1)^na_n\frac{x^n}{n!}
+=\cos(\sqrt{x}),
 \]
+which has only real zeros in \(x\). Therefore \((-1)^na_n\) is a classical Pólya–Schur multiplier sequence; equivalently, \(a_n\) is a multiplier sequence up to the harmless alternating-sign transform.
 
-or, more directly, a direct theorem proving the transformed coefficient sequence \(\gamma_n\) is a Pólya-frequency sequence for the actual theta moments.
-
-No such preservation theorem was established here. In particular, positivity of the theta kernel alone does not supply it.
+This is a real structural fact, but it does **not** solve RH. The reason is exact: the known function is
+\[
+8\xi(1/2+z)=\sum_n 8a_nM_n\frac{z^{2n}}{n!},
+\]
+so the multiplier acts on the exponential generating function
+\[
+B(w)=\sum_n M_n\frac{w^n}{n!},
+\]
+whereas the available theta expansion gives
+\[
+\xi(1/2+z)=\sum_n M_n\frac{z^{2n}}{(2n)!}.
+\]
+We do not have a proof that \(B\) belongs to the Laguerre–Pólya class. Establishing that missing bridge would be a genuinely new route to RH.
 
 ## 5. Exact higher-degree target
 
-For every \(d,n\ge0\), the missing theorem is
-
+The unresolved global statement is
 \[
 \boxed{
 J_{d,n}(X)=\sum_{j=0}^d\binom dj
 8\frac{(n+j)!}{(2n+2j)!}M_{n+j}X^j
-\text{ is hyperbolic}.
+\text{ is hyperbolic for every }d,n\ge0.
 }
 \]
 
-Degree 2 is only the first necessary condition. Newton inequalities, Hankel positivity, or positivity of the original theta moments do not by themselves imply this all-degree statement.
+Degree 2 is only the first necessary condition. Generic moment positivity, finite computation, or fixed-degree asymptotics cannot replace the all-\(d\), all-\(n\) quantifier.
 
 ## 6. De Bruijn–Newman cross-check
 
-The heat-flow family can be written in the form
-
+For
 \[
-H_t(x)=\int_0^\infty e^{tu^2}\Phi(u)\cos(xu)\,du.
+H_t(x)=\int_0^\infty e^{tu^2}\Phi(u)\cos(xu)\,du,
 \]
+the de Bruijn–Newman constant \(\Lambda\) satisfies: all zeros are real exactly for \(t\ge\Lambda\), RH implies \(\Lambda\le0\), and Rodgers–Tao proved \(\Lambda\ge0\). Thus this route needs the exact boundary conclusion \(\Lambda=0\).
 
-There is a finite constant \(\Lambda\) such that all zeros are real exactly for \(t\ge\Lambda\). RH is equivalent to \(\Lambda\le0\), while Rodgers–Tao proved \(\Lambda\ge0\). Hence a proof through this route must establish
+No proof of that final equality was obtained here.
 
+## 7. Literature checkpoint
+
+Known work proves eventual Jensen hyperbolicity for each fixed degree. A 2026 preprint by Jonathan Holland gives the simultaneous sufficient region
 \[
-\boxed{\Lambda=0}.
+n^3\log^2(n+2)\ge Kd^5\Longrightarrow J_{d,n}\text{ hyperbolic},
 \]
+but this still leaves a complementary region. It therefore does not establish RH.
 
-No valid argument forcing equality was found in this frontier.
+## 8. What this frontier genuinely adds
 
-## 7. What was actually proved here
+1. Exact canonical normalization and degree-2 condition.
+2. Exact beta representation showing why ordinary positive-moment arguments fail.
+3. A new multiplier-sequence observation: the factorial multiplier is Pólya–Schur after the alternating-sign transform because its exponential generating function is \(\cos(\sqrt{x})\).
+4. A precise reformulation of the missing bridge: prove the associated exponential generating function \(B(w)=\sum M_nw^n/n!\) has the required Laguerre–Pólya structure, or derive an equivalent direct hyperbolicity theorem.
 
-1. The canonical Jensen normalization is fixed exactly.
-2. The degree-2 inequality is derived exactly.
-3. The factorial transform is exposed as the essential obstruction to a naive moment-positivity proof.
-4. A beta-integral representation of the factorial factor is obtained, but it does not produce a fixed positive measure for \(\gamma_n\).
-5. The multiplier-sequence route is identified as a possible global closure mechanism, but no preservation theorem is asserted without proof.
+## 9. Non-claim
 
-## 8. Non-claim
-
-This document does **not** claim a proof of RH. The unresolved mathematical step is still a global all-degree/all-shift hyperbolicity theorem (or an independent Laguerre–Pólya/de Bruijn–Newman argument). Any future proof must explicitly close that step rather than replacing it with finite computation, asymptotic evidence, or an incorrectly normalized moment inequality.
+This document does **not** claim a proof of RH. The final global zero-location step remains open and is stated explicitly so future work cannot accidentally hide the missing quantifier.
