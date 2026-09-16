@@ -1,15 +1,15 @@
 # Frontier 34 — normalized third-Hermite obstruction and sharpened theta target
 
-Starting from Frontier 32, define the positive leading coefficient \(q_0=\gamma_{n+d}>0\) and normalized ratios
+Starting from Frontier 32, define
 \[
-r_1=\frac{q_1}{q_0},\quad r_2=\frac{q_2}{q_0},\quad r_3=\frac{q_3}{q_0},\quad r_4=\frac{q_4}{q_0}.
+r_j=\frac{q_j}{q_0},\qquad j=1,2,3,4,
 \]
-Then the exact third-Hermite obstruction becomes
+with \(q_0=\gamma_{n+d}>0\). Since \(\mathcal Q_d\) is homogeneous of degree four,
 \[
-\boxed{\mathcal Q_d=q_0^4\,\widetilde Q_d(r_1,r_2,r_3,r_4)}.
+\boxed{\mathcal Q_d=q_0^4\widetilde Q_d(r_1,r_2,r_3,r_4)}.
 \]
 
-The normalized polynomial is
+The exact normalized polynomial is
 \[
 \begin{aligned}
 \widetilde Q_d={}&
@@ -19,59 +19,54 @@ The normalized polynomial is
 \end{aligned}
 \]
 
-Hence
+Therefore the exact Hermite minor from Frontier 32 simplifies to
 \[
 \boxed{
-\Delta_3=
-\frac{d^3(d-1)^2(d-2)}{12}\frac{\widetilde Q_d}{q_0^0}\,q_0^0
+\Delta_3=\frac{d^3(d-1)^2(d-2)}{12}\,\widetilde Q_d.
 }
 \]
-with the equivalent and dimensionally cleaner form inherited directly from Frontier 32:
-\[
-\boxed{
-\Delta_3=\frac{d^3(d-1)^2(d-2)}{12}\,\frac{\widetilde Q_d}{q_0^0}
-}
-\]
-where the cancellation of powers of \(q_0\) follows because \(\mathcal Q_d\) is homogeneous of degree four. (The important point is the sign: \(\operatorname{sgn}\Delta_3=\operatorname{sgn}\widetilde Q_d\).)
+Thus, for \(d\ge3\), \(\Delta_3\ge0\) is equivalent to \(\widetilde Q_d\ge0\).
 
-More usefully, separate the \(d\)-dependence:
-\[
-\widetilde Q_d=dP_0-6H_0,
-\]
-where
+## 1. Structural decomposition
+
+Define
 \[
 P_0=-4r_1^3r_3+3r_1^2r_2^2-2r_1^2r_4+10r_1r_2r_3-6r_2^3+2r_2r_4-3r_3^2,
 \]
-while
+and
 \[
-H_0=r_2r_4-r_3^2-r_1^2r_4+2r_1r_2r_3-r_2^3
-=\frac{H_3(q)}{q_0^3}.
+H_0=r_2r_4-r_3^2-r_1^2r_4+2r_1r_2r_3-r_2^3.
 \]
-Thus the exact sign condition is
+Then
+\[
+\boxed{\widetilde Q_d=dP_0-6H_0},
+\]
+where \(H_0=H_3(q)/q_0^3\). Hence the exact closure inequality is
 \[
 \boxed{dP_0\ge6H_0.}
 \]
 
-## New target
+## 2. Why generic moment positivity is insufficient
 
-The next closure problem is no longer an undifferentiated polynomial-positivity question. It is the Riemann-specific inequality
+Frontier 33 gives an exact counterexample: the positive two-atom Stieltjes measure
 \[
-\boxed{dP_0(r_1,r_2,r_3,r_4)\ge6H_0(r_1,r_2,r_3,r_4)}
+\mu=14\,\delta_{10}+\delta_{40}
 \]
-for the consecutive ratios of the Riemann-xi coefficients.
+with moments \(M_m=14\,10^m+40^m\), followed by the same positive factorial weighting \(\gamma_m=m!M_m/(2m)!\), has \(\mathcal Q_3<0\) at \(n=2\). Thus the desired inequality is not a consequence of Stieltjes moment positivity plus the factorial multiplier alone.
 
-The Frontier 33 exact counterexample shows that generic Stieltjes moment positivity cannot imply this inequality: a positive two-atom measure, after applying the same \(m!/(2m)!\) multiplier, produces \(\mathcal Q_3<0\).
+## 3. Sharpened Riemann-specific target
 
-Therefore the next serious attack should derive \(P_0\) directly from the specific Riemann theta kernel, seeking an explicit positive integral/SOS representation or a stronger kernel inequality. Any proof must be uniform in \(n,d\), not finite-degree or numerical.
-
-## Important correction
-
-The normalized formula above preserves sign only; when substituting \(\mathcal Q_d=q_0^4\widetilde Q_d\) into Frontier 32's prefactor, one gets
+The next genuine proof target is therefore:
 \[
-\Delta_3=\frac{d^3(d-1)^2(d-2)}{12}\frac{\widetilde Q_d}{q_0^0},
+\boxed{
+\text{derive }dP_0-6H_0\ge0\text{ directly from the exact Riemann theta kernel, uniformly in }n,d.
+}
 \]
-i.e. the \(q_0^4\) cancels exactly. This is why \(\widetilde Q_d\) is the clean dimensionless target.
+
+Possible mechanisms include an explicit positive-kernel/SOS representation, a stronger total-positivity property of the factorially weighted theta moments, or an all-degree hyperbolicity argument that bypasses separate Hermite minors.
+
+The target must not assume RH, Jensen hyperbolicity, LP status, or a finite-degree numerical check.
 
 ## Status
 
-Partial: exact normalization and target reformulation. No positivity proof and no RH proof has been obtained.
+**Partial, rigorous reduction.** This frontier gives a dimensionless exact target and records the generic-moment obstruction. It is not a proof of RH.
