@@ -1,8 +1,12 @@
 # Frontier 22 — Degree-3 discriminant verification
 
-For
+For the actual Riemann Jensen polynomial
 \[
 J_{3,n}(X)=A+\frac{3B}{2(2n+1)}X+\frac{3C}{4(2n+1)(2n+3)}X^2+\frac{D}{4(2n+1)(2n+3)(2n+5)}X^3,
+\]
+where
+\[
+A=M_n,\quad B=M_{n+1},\quad C=M_{n+2},\quad D=M_{n+3},
 \]
 set
 \[
@@ -30,4 +34,14 @@ Q_{3,n}={}&(32n^3+176n^2+312n+180)B^3D\\
 &+(32n^3+80n^2+56n+12)A^2D^2.
 \end{aligned}
 \]
-Thus, for positive leading coefficient and positive coefficients, the degree-3 hyperbolicity condition is exactly \(Q_{3,n}\le0\). This formula has been independently expanded symbolically from the cubic discriminant and is the expression used in Frontier 22.
+Thus the necessary and sufficient cubic real-root condition (for nonzero leading coefficient) is \(Q_{3,n}\le0\).
+
+Sanity check at \(n=0\) with the degenerate moment pattern \(A=1,B=r,C=r^2,D=r^3\):
+\[
+Q_{3,0}=67r^6>0,
+\]
+so the corresponding cubic has negative discriminant. This agrees with the direct test of
+\[
+1+\frac32Y+\frac14Y^2+\frac1{60}Y^3,
+\]
+which has one real root and one complex-conjugate pair. This sanity check also exposes why the earlier Pólya–Schur inference about \(G_{3,0}\) was invalid.
