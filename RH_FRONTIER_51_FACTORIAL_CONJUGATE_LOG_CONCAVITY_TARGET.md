@@ -22,76 +22,76 @@ is exactly equivalent to
 \frac{M_{m+1}^2}{M_mM_{m+2}}
 \ge
 \frac{q_mq_{m+2}}{q_{m+1}^2}
-=
-\frac{(m+2)(2m+3)}{(m+1)(2m+1)}.
+=\frac{(m+2)(2m+3)}{(m+1)(2m+1)}.
 }
 \]
-
-Equivalently, since the right side is greater than one,
-\[
-\boxed{
-M_{m+1}^2\ge
-\frac{(m+2)(2m+3)}{(m+1)(2m+1)}M_mM_{m+2}.
-}
-\]
-This is a stronger-than-log-concavity condition on the unnormalized theta atom sum.
 
 ## 1. Exact factorial correction
 
-Direct calculation gives
 \[
-\boxed{
-\frac{q_{m+1}^2}{q_mq_{m+2}}
-=\frac{(m+1)(2m+1)}{(m+2)(2m+3)}.
-}
+\boxed{\frac{q_{m+1}^2}{q_mq_{m+2}}=\frac{(m+1)(2m+1)}{(m+2)(2m+3)}}.
 \]
-Thus no normalization ambiguity remains: the complete local Turan problem is a single explicit inequality for `M_m`.
+Thus the local Turan problem is exactly one explicit inequality for `M_m`.
 
-## 2. Why positivity of `B_m` is insufficient
+## 2. Positivity is insufficient
 
-Frontier 50 gives `B_m(pi k^2)>0`, but positive sequences can be log-convex rather than log-concave. Numerically, the atom sequences and their sums exhibit this competing tendency before factorial correction. Therefore replacing the signed kernel by a positive-measure argument cannot by itself close Turan positivity.
+Frontier 50 proves `B_m(pi k^2)>0`, but positive sequences can be log-convex. The factorial factor must quantitatively overcome the atom-sum curvature.
 
-## 3. Exact double-sum reformulation
+## 3. Adversarial test of a tempting stronger route
 
-Because every atom is now positive, define
+A tempting sufficient condition is the four-point inequality
+\[
+B_{m+1}(a)B_{m+1}(b)
+\ge
+\eta_m\bigl(B_m(a)B_{m+2}(b)+B_m(b)B_{m+2}(a)\bigr),
+\]
+where
+\[
+\eta_m=\frac{(m+1)(2m+1)}{2(m+2)(2m+3)}.
+\]
+It is **false**. Direct high-precision quadrature gives a counterexample already at
+\[
+m=1,\qquad a=\pi,\qquad b=4\pi,
+\]
+for which the ratio left/right is approximately `0.3433<1`. Therefore the Turan form cannot be certified by pointwise positivity of this stronger four-point kernel inequality.
+
+This falsification is important: it forces the proof to use genuinely global summation structure.
+
+## 4. Exact global target
+
+Define
 \[
 p_m(k)=\frac{B_m(\pi k^2)}{M_m}.
 \]
-Then `p_m` is a probability distribution over `k`. The ratio
+Then `p_m` is a probability distribution over `k`. The remaining inequality is a structured overlap/transport inequality among the three adjacent distributions, not a pointwise kernel inequality.
+
+A viable route is to prove monotonicity and quantitative contraction for
 \[
-\frac{M_{m+1}^2}{M_mM_{m+2}}
+\mathcal R_m(k)=\frac{B_{m+1}(\pi k^2)}{B_m(\pi k^2)},
 \]
-can be interpreted as a change-of-measure overlap between the three adjacent atom distributions. A successful proof should exploit this structured coupling rather than pointwise positivity.
+then convert the double sum into a covariance/variance bound.
 
-## 4. New structural target: cross-order likelihood ratio
+## 5. New research target: total positivity of the atom matrix
 
-A sufficient route would be to prove monotonicity of
+Set
 \[
-\mathcal R_m(k):=
-\frac{B_{m+1}(\pi k^2)}{B_m(\pi k^2)}
+\mathsf B_{m,k}=B_m(\pi k^2).
 \]
-in `k`, together with a quantitative bound on its spread from `m` to `m+1`. Such a result could convert the double-sum Turan form into a covariance inequality.
-
-A stronger target is the four-point inequality
+Seek a two-by-two minor theorem of the form
 \[
 \boxed{
-B_{m+1}(a)B_{m+1}(b)
-\ge
-\eta_m\bigl(B_m(a)B_{m+2}(b)+B_m(b)B_{m+2}(a)\bigr)
+\mathsf B_{m,k}\mathsf B_{m+1,k+1}
+-\mathsf B_{m,k+1}\mathsf B_{m+1,k}\ge0
 }
 \]
-for `a,b` in the theta set. This is deliberately stronger than necessary; it must be adversarially tested before being promoted.
+or the reverse sign, after determining the actual orientation. Such total positivity would provide a mathematically natural mechanism for controlling the change of measure in `k`.
 
-## 5. Falsification requirement
-
-The raw Turan kernel was previously shown to take negative values off the diagonal. Therefore the stronger four-point inequality above cannot be assumed. Any proof attempt must search for explicit counterexamples in `(m,a,b)` before using it.
-
-The correct global target remains the summed inequality for `M_m`, not pointwise positivity of the kernel.
+The orientation must be established, not assumed.
 
 ## 6. Audit
 
-**Established:** exact factorial-conjugate reformulation of adjacent Turan positivity.
+**Established:** exact factorial-conjugate reformulation; a concrete counterexample to the tempting pointwise four-point strengthening; the precise global atom-sum target.
 
-**New research target:** prove the required strengthened inequality for the theta atom sum using cross-order likelihood ratios, total positivity, or a Gram representation.
+**Open:** the total-positivity orientation and theorem; the required atom-sum Turan inequality; the degree-3 cone; all-degree Jensen hyperbolicity; equivalence-to-RH closure; RH itself.
 
-**Not established:** the target inequality, all-order Jensen hyperbolicity, or RH.
+**Status: rigorous reduction plus adversarial falsification; no RH proof claimed.**
