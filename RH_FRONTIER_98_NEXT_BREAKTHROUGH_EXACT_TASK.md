@@ -6,6 +6,20 @@ Date: 2026-09-16
 
 The collapsed-variable modular orbit is not sufficient. The scale variable y is invariant under the natural reflection, and the degree-two kernel changes sign. The correct route must retain the completed theta lattice until after Poisson/Jacobi transformation.
 
+## Critical normalization correction
+
+Before executing the degree-two transform, the coefficient ratio in the Frontier-97 kernel must be corrected. For
+\[
+c_k=\frac{2k+1}{k!},
+\]
+we have exactly
+\[
+R_n=\frac{c_{n+1}^2}{c_nc_{n+2}}
+=\frac{(n+2)(2n+3)^2}{(n+1)(2n+1)(2n+5)}
+=1+\frac{4n^2+16n+13}{(n+1)(2n+1)(2n+5)}.
+\]
+The factorials do not completely cancel. Therefore the numerical positivity intervals in Frontier 97 must not be reused.
+
 ## Exact calculation to perform next
 
 With
@@ -38,6 +52,17 @@ Find a theta-specific positive operator \(\mathcal P_n\) such that
 ### Outcome C — exact obstruction
 Show that the transformed complete-lattice kernel contains an unavoidable negative principal minor, proving that this modular-Gram route cannot close degree two.
 
+## New integrated form of the gate
+
+For a positive measure with moments \(M_j\), the corrected degree-two inequality is
+\[
+\boxed{
+\frac{\operatorname{Var}(Y)}{E[Y]^2}\le R_n-1
+=\frac{4n^2+16n+13}{(n+1)(2n+1)(2n+5)}.
+}
+\]
+Thus the degree-two problem can be reformulated as a theta-specific coefficient-of-variation bound. This is a sharper target than pointwise kernel positivity, which is impossible because the kernel has one positive and one negative square component.
+
 ## Lift criterion
 
 Only Outcome A or B is eligible for lifting to
@@ -50,4 +75,4 @@ for all d,n.
 
 No finite numerical verification, asymptotic wedge, generic positive-mixture assertion, or RH-equivalent positivity statement counts as a breakthrough. Every identity must be exact and unconditional.
 
-**Status: active proof-bearing target.**
+**Status: active proof-bearing target; RH remains unproved.**
