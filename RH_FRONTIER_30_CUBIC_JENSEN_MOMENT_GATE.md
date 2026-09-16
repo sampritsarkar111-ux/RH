@@ -45,6 +45,14 @@ p_{3,n}(X)=X^3+b_1X^2+b_2X+b_3.
 
 ## 2. Exact coefficient reduction
 
+The monic coefficients are ordered by descending powers. Therefore
+
+\[
+b_1=\frac{3\gamma_{n+2}}{\gamma_{n+3}},\qquad
+b_2=\frac{3\gamma_{n+1}}{\gamma_{n+3}},\qquad
+b_3=\frac{\gamma_n}{\gamma_{n+3}}.
+\]
+
 Since
 
 \[
@@ -59,13 +67,13 @@ Since
 \frac{a_{n+2}}{a_{n+3}}=2(2n+5),
 \]
 
-we get exactly
+we obtain exactly
 
 \[
 \boxed{
 \begin{aligned}
-b_1&=-12(2n+3)(2n+5)\frac{M_{n+1}}{M_{n+3}},\\
-b_2&=6(2n+5)\frac{M_{n+2}}{M_{n+3}},\\
+b_1&=-6(2n+5)\frac{M_{n+2}}{M_{n+3}},\\
+b_2&=12(2n+3)(2n+5)\frac{M_{n+1}}{M_{n+3}},\\
 b_3&=-8(2n+1)(2n+3)(2n+5)\frac{M_n}{M_{n+3}}.
 \end{aligned}}
 \]
@@ -104,42 +112,36 @@ Then
 \frac{M_{n+2}}{M_{n+3}}=\frac1{r_3}.
 \]
 
-Substitution gives a completely explicit rational polynomial condition in \((r_1,r_2,r_3,n)\). Equivalently, without expanding the large polynomial, the exact gate is
+Hence the exact coefficients in ratio variables are
 
 \[
 \boxed{
 \begin{aligned}
-0\le \Delta_{3,n}
-={}&[12(2n+3)(2n+5)]^2
- [6(2n+5)]^2\frac1{r_2^2r_3^2}\\
-&-4[6(2n+5)]^3\frac1{r_3^3}\\
-&-4[-12(2n+3)(2n+5)]^3[-8(2n+1)(2n+3)(2n+5)]
- \frac1{r_1r_2^4r_3^4}\\
-&-27[8(2n+1)(2n+3)(2n+5)]^2\frac1{r_1^2r_2^2r_3^2}\\
-&+18[-12(2n+3)(2n+5)][6(2n+5)][-8(2n+1)(2n+3)(2n+5)]
- \frac1{r_1r_2^2r_3^3}.
+b_1&=-\frac{6(2n+5)}{r_3},\\
+b_2&=\frac{12(2n+3)(2n+5)}{r_2r_3},\\
+b_3&=-\frac{8(2n+1)(2n+3)(2n+5)}{r_1r_2r_3}.
 \end{aligned}}
 \]
 
-After multiplying by the positive denominator \(r_1^2r_2^4r_3^4\), this becomes a polynomial inequality with no divisions.
+Substitution into the cubic discriminant gives an exact rational polynomial condition in \((r_1,r_2,r_3,n)\). Multiplication by the positive denominator \(r_1^2r_2^4r_3^4\) removes all divisions.
 
 ## 4. Why this is stronger than ordinary moment log-convexity
 
-The positive measure only gives the Stieltjes/Hankel moment inequality
+The positive measure gives the Stieltjes/Hankel moment inequality
 
 \[
-M_{n+j}^2\le M_{n+j-1}M_{n+j+1}.
+M_{n+j}^2\le M_{n+j-1}M_{n+j+1},
 \]
 
-Equivalently,
+and therefore
 
 \[
 r_1\le r_2\le r_3.
 \]
 
-But the cubic gate is a nonlinear inequality involving all three ratios and the arithmetic factors \((2n+1),(2n+3),(2n+5)\). Thus monotonicity of consecutive moment ratios is not, by itself, the desired theorem.
+But the cubic discriminant is a nonlinear constraint involving all three ratios and the arithmetic factors \((2n+1),(2n+3),(2n+5)\). Thus monotonicity of consecutive moment ratios is not, by itself, the desired theorem.
 
-This establishes a precise hierarchy:
+The hierarchy is therefore
 
 \[
 \text{positive theta measure}
@@ -170,29 +172,23 @@ Hence
 
 \[
 r_1=\mathbb E_n[Y],
-\]
-
-\[
+\qquad
 r_1r_2=\mathbb E_n[Y^2],
-\]
-
-\[
+\qquad
 r_1r_2r_3=\mathbb E_n[Y^3].
 \]
 
-Therefore the degree-3 gate can be rewritten entirely in terms of the first three raw moments of the tilted variable \(Y\). Passing to centered moments
+Thus the degree-3 gate is entirely a constraint on the first three raw moments of the tilted variable \(Y\). Passing to
 
 \[
 \mu=\mathbb E_n[Y],
 \qquad
 \sigma^2=\mathbb E_n[(Y-\mu)^2],
 \qquad
-\kappa_3=\mathbb E_n[(Y-\mu)^3],
+\kappa_3=\mathbb E_n[(Y-\mu)^3]
 \]
 
-is an algebraic change of variables. The resulting condition is an explicit cubic-scale constraint on \((\mu,\sigma^2,\kappa_3)\).
-
-This identifies the next structural question: can the special theta kernel prove a sharp bound on the standardized skewness together with the variance bound from Frontier 28?
+is an algebraic reparameterization. The discriminant can consequently be studied as a finite-dimensional inequality in \((\mu,\sigma^2,\kappa_3)\), with explicit dependence on \(n\).
 
 ## 6. New proof target
 
@@ -207,7 +203,7 @@ For degree 2 the required condition is
 
 For degree 3 the exact discriminant above gives the next coupled condition involving \(\mathbb E_n[Y]\), \(\operatorname{Var}_n(Y)\), and \(\kappa_3\).
 
-The research target is therefore not merely “prove log-convexity”, but
+The research target is therefore
 
 \[
 \boxed{
@@ -229,6 +225,16 @@ This frontier does not assume:
 
 The remaining implication is genuinely open: deriving the exact cubic inequality, and eventually all higher Hermite inequalities, from the arithmetic/theta structure.
 
-## 8. Conclusion
+## 8. Verification note
+
+The coefficient ordering was explicitly checked against
+
+\[
+p_{3,n}=X^3+\frac{3\gamma_{n+2}}{\gamma_{n+3}}X^2+\frac{3\gamma_{n+1}}{\gamma_{n+3}}X+\frac{\gamma_n}{\gamma_{n+3}}.
+\]
+
+This correction is important: interchanging \(b_1\) and \(b_2\) changes the discriminant and would invalidate the gate.
+
+## 9. Conclusion
 
 Frontier 30 converts the next Jensen level into an exact finite-dimensional moment gate. This is a genuine reduction of the proof problem, but **not a proof of RH**. The next decisive step is to derive a sharp theta-kernel inequality that implies the cubic gate and then generalize it to all degrees.
