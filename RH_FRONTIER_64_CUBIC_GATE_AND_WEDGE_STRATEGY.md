@@ -43,9 +43,11 @@ The exact factorial-weighted cubic quantity from the central-moment reduction is
 \[
 \widetilde Q_3(n)=-3\big(w^2+4v^3\big).
 \]
-Expanding `w^2+4v^3` shows that the bracket above equals
+A direct expansion gives the exact identity
 \[
-q_n^2\big(w^2+4v^3\big).
+q_n^2\big(w^2+4v^3\big)
+= q_n^2q_{n+3}^2-6q_nq_{n+1}q_{n+2}q_{n+3}
++4q_nq_{n+2}^3+4q_{n+1}^3q_{n+3}-3q_{n+1}^2q_{n+2}^2.
 \]
 Therefore the orientation is not ambiguous:
 \[
