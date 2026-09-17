@@ -6,6 +6,15 @@ Date: 2026-09-16
 
 Attack the RH proof through an exact all-degree positive-semidefinite representation derived from the completed Riemann theta kernel, while retaining the full lattice sum until the positivity mechanism is exposed. This replaces the zero-location-free determinant-tail route rejected in Frontier 108.
 
+## Important correction
+
+The degree-two factorial ratio in the earlier draft contained an algebraic error. The correct factor is
+\[
+\frac{(2n+2)!^2}{(2n)!(2n+4)!}
+=\frac{(2n+1)(n+1)}{(2n+3)(n+2)},
+\]
+not the previously written expression containing an extra factor \((2n+5)/(2n+3)\). The variance bound below is corrected accordingly. This correction is essential because the project requires exact, non-circular algebra.
+
 The completed kernel is
 \[
 \Phi(u)=\sum_{m\ge1}\left(2\pi^2m^4e^{9u/2}-3\pi m^2e^{5u/2}\right)e^{-\pi m^2e^{2u}},
@@ -32,8 +41,6 @@ M_k:=\int_{\mathbb R}u^{2k}\Phi(u)\,du.}
 \]
 Thus the Taylor coefficients are exact even moments of the positive completed-theta measure.
 
-This identity is the starting point for an all-degree calculation; no zero locations are used.
-
 ## 2. Exact Jensen polynomial representation
 
 For degree \(d\) and shift \(n\), take the standard Jensen polynomial
@@ -50,7 +57,7 @@ J_{d,n}(X)
 \]
 The bracket is an explicit finite polynomial, but it is NOT pointwise real-rooted in \(X\) for arbitrary \(u\), so this formula alone is not a Gram certificate.
 
-## 3. Exact degree-two gate recovered from the theta measure
+## 3. Correct exact degree-two gate
 
 For \(d=2\),
 \[
@@ -67,22 +74,22 @@ Using \(\gamma_k=M_k/(2k)!\), this becomes
 \ge
 \frac{(2n+2)!^2}{(2n)!(2n+4)!}
 =
-\frac{(n+1)(2n+1)(2n+5)}{(n+2)(2n+3)^2}.
+\frac{(2n+1)(n+1)}{(2n+3)(n+2)}.
 }
 \]
-Equivalently, for the probability measure
+For
 \[
 d\nu_n(u)=\frac{u^{2n}\Phi(u)\,du}{M_n},
 \qquad Y=u^2,
 \]
+we have \(\mathbb E[Y]=M_{n+1}/M_n\) and \(\mathbb E[Y^2]=M_{n+2}/M_n\), so
 \[
-\boxed{
 \frac{\operatorname{Var}_{\nu_n}(Y)}{\mathbb E_{\nu_n}[Y]^2}
+=\frac{M_nM_{n+2}}{M_{n+1}^2}-1
 \le
-\frac{4n^2+16n+13}{(n+1)(2n+1)(2n+5)}.
-}
+\boxed{\frac{4n+5}{(2n+1)(n+1)}}.
 \]
-This is an exact necessary condition for the degree-two Jensen mechanism. It is not yet proved for the Riemann theta measure for every \(n\).
+This is an exact necessary-and-sufficient degree-two condition in this normalization. It is not yet proved for the Riemann theta measure for every \(n\).
 
 ## 4. What an all-degree Gram factorisation must actually prove
 
