@@ -61,33 +61,30 @@ Báez-Duarte's strengthening gives
 Hence an explicit sequence \(G_N=\sum_{a\le N}c_{a,N}\rho_a\) with \(\|\chi-G_N\|_2\to0\) would itself prove RH.
 
 ### Explicit finite approximant benchmark
-Báez-Duarte gives a concrete Möbius-weighted candidate (with a constant \(c>0\))
+Báez-Duarte's smoothing framework provides concrete Möbius-weighted candidates of the form
 \[
-G_N^{(c)}(x)=-\sum_{a=1}^{N}\mu(a)\exp\!\left(-c\frac{\log a}{\log\log N}\right)\rho_a(x).
+G_N^{(\varepsilon)}(x)=-\sum_{a=1}^{N}\frac{\mu(a)}{a^{\varepsilon}}\rho_a(x),
+\qquad \varepsilon>0,
 \]
-The cited theorem states that **assuming RH**, its distance from \(\chi_{(0,1)}\) is of order
-\[
-\boxed{\|\chi-G_N^{(c)}\|_2=O\!\big((\log\log N)^{-1/3}\big).}
-\]
-Therefore this is an explicit vanishing-error approximation, but its available error theorem is conditional on RH and cannot be used as an independent proof.
+with an explicit Fourier–Mellin error decomposition. In particular, the exact norm splits into a truncation term measuring the difference between the finite Möbius sum and \(1/\xi\), plus a shift term measuring \(\xi(z)/\xi(z+\varepsilon)-1\). Báez-Duarte's analysis shows that suitable choices such as \(\varepsilon_N\asymp1/\log\log N\) yield vanishing error **under RH**. The available estimate is therefore a benchmark, not an unconditional proof. citeturn0search23
 
 The unconditional finite-dimensional quantity is
 \[
 d_N:=\inf_{c_1,\dots,c_N}\left\|\chi_{(0,1)}-\sum_{a=1}^N c_a\rho_a\right\|_2,
 \]
-with \(d_N\downarrow d\), and the criterion gives \(d=0\iff\mathrm{RH}\). Existing results give nontrivial lower bounds/asymptotics and numerical evidence, but no unconditional proof that \(d_N\to0\).
+with \(d_N\downarrow d\), and the criterion gives \(d=0\iff\mathrm{RH}\). Known unconditional work instead supplies lower bounds; for example Burnol's refinement gives a liminf lower bound involving the multiplicities of zeros on the critical line. Thus the difficult direction is still an unconditional upper bound forcing \(d_N\to0\). citeturn0search0
 
 ## Exact independent wall
 The two requested attacks now reduce to two sharply stated, non-circular missing inequalities:
 
 1. **Li/Weil:** derive an exact representation \(\lambda_n=A_n+R_n\) with \(A_n\ge0\) and \(R_n\ge0\) for every \(n\), using only arithmetic/theta/explicit-formula data. The current exact decomposition has an uncontrolled signed \(\eta\)-remainder.
-2. **Nyman–Beurling:** prove an unconditional explicit coefficient sequence \(c_{a,N}\) with \(\|\chi-\sum_{a\le N}c_{a,N}\rho_a\|_2\le E_N\) and \(E_N\to0\). The known Möbius construction has the desired rate only under RH.
+2. **Nyman–Beurling:** prove an unconditional explicit coefficient sequence \(c_{a,N}\) with \(\|\chi-\sum_{a\le N}c_{a,N}\rho_a\|_2\le E_N\) and \(E_N\to0\). The Möbius constructions currently available do not supply this independently of RH.
 
 These are not merely computational gaps: each missing statement is strong enough to imply RH. Any derivation that obtains either bound by assuming the corresponding RH-equivalent property is circular.
 
 ## Non-circularity rules
 - Do not assume RH or that all Xi zeros are real.
-- Do not assume a self-adjoint Hilbert–Polya operator without constructing and verifying it.
+- Do not assume a self-adjoint Hilbert–Pólya operator without constructing and verifying it.
 - Finite-degree positivity, numerical zeros, and asymptotics are evidence only, never an all-degree theorem.
 - Every positivity decomposition must be exact on its full domain.
 - Failed identities must retain their exact residual/obstruction.
