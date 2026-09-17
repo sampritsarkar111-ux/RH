@@ -10,77 +10,89 @@ The previous frontier proved positivity of the intrinsic theta moment Hankel mat
 
 The first task is therefore to derive the bridge exactly, without assuming RH.
 
-## 2. Exact entire-function normalization
+## 2. Correct entire-function normalization
 
 Let
 
 `Xi(w) = xi(1/2+w)`
 
-and define the even entire function
+and define
 
-`H(z) = Xi(i sqrt(z))`.
+`H(z) = Xi(sqrt(z))`,
 
-Because Xi is even in w, H is single-valued and entire in z. From the theta representation,
+where the evenness of Xi makes H a single-valued entire function of z.
 
-`H(z) = 2 integral_0^infinity Phi(u) cosh(u sqrt(z)) du`,
+The theta/Fourier representation has the form
 
-with the standard Riemann theta kernel Phi.
+`Xi(w) = 2 integral_0^infinity Phi(u) cos(w u) du`.
+
+Hence
+
+`H(z) = 2 integral_0^infinity Phi(u) cos(u sqrt(z)) du`.
+
+This normalization is essential: if a zero of Xi is at `w=i gamma`, then its H-image is
+
+`z=(i gamma)^2=-gamma^2`,
+
+so RH is exactly the statement that all zeros of H lie on `(-infinity,0]`.
 
 Expanding at z=0 gives
 
-`H(z) = sum_{k>=0} h_k z^k`,
+`H(z) = 2 sum_{k>=0} (-1)^k M_k z^k/(2k)!`,
 
 where
 
-`h_k = 2/(2k)! integral_0^infinity Phi(u) u^(2k) du`.
+`M_k = integral_0^infinity Phi(u)u^(2k)du`.
 
-Thus the intrinsic theta moments are exactly the Taylor coefficients of H up to the factorial normalization:
-
-`h_k = 2 M_k/(2k)!`.
-
-This is an exact theta-to-H bridge and is RH-independent.
+Thus the theta moments are the Taylor coefficients of H with the explicit alternating/factorial normalization.
 
 ## 3. Exact theta → tau bridge through the logarithmic derivative
 
-Write `a_rho = rho-1/2`. Pairing the zeros of Xi at `+a_rho` and `-a_rho` gives the canonical product in z. Consequently, in a neighborhood of z=0,
+Let `a_rho=rho-1/2`. Pairing the zeros `+a_rho` and `-a_rho` in the even canonical product gives factors
 
-`H'(z)/H(z) = C_0 + sum_rho 1/(z+a_rho^2)`
+`1 + z/a_rho^2`.
 
-with the standard genus/convergence normalization absorbed into the analytic constant term. For derivatives of order n>=1 the polynomial normalization disappears, giving the exact identity
+After the standard genus-one polynomial normalization is separated, differentiation removes the polynomial ambiguity at sufficiently high order. The zero-dependent part of the logarithmic derivative is
+
+`H'(z)/H(z) = A(z) + sum_rho 1/(z+a_rho^2)`
+
+in the region of local convergence, with A an entire polynomial of degree at most the genus contribution.
+
+For n large enough that the polynomial contribution vanishes (and in particular for the convergent power sums defining the present tau sequence),
 
 `(H'/H)^(n)(0) = (-1)^n n! sum_rho a_rho^(-2n-2)`.
 
-Therefore, with
+Since
 
-`tau_n = sum_rho [-(a_rho)^(-2)]^(n+1)`,
+`tau_n = sum_rho [-a_rho^(-2)]^(n+1) = (-1)^(n+1) sum_rho a_rho^(-2n-2)`,
 
-we obtain the exact bridge
+we obtain
 
-`boxed{ tau_n = - (1/n!) (d^n/dz^n)[H'(z)/H(z)]_{z=0},  n>=1 }`.
+`boxed{ tau_n = -(1/n!) (d^n/dz^n)[H'(z)/H(z)]_{z=0} }`
 
-For n=0 there is an additive normalization issue in H'/H; the RH-bearing sequence begins with n>=1.
+for every n in the range where the genus polynomial has disappeared; for the present zeta zero sums this includes the RH-bearing tail. The low-index normalization must be handled separately rather than silently absorbed.
 
 No zero location is assumed in this identity.
 
 ## 4. The crucial correction: tau is not the theta moment sequence
 
-Let `m_k = H^(k)(0)`. Then
+Let `m_k=H^(k)(0)`. Then
 
-`H'/H = (log H)'`.
+`H'/H=(log H)'`.
 
-Hence tau is a sequence of logarithmic-derivative coefficients, i.e. cumulant-type polynomials in the theta moments, not the raw moments themselves.
+Hence tau is a sequence of logarithmic-derivative coefficients, i.e. cumulant-type polynomials in the theta Taylor data, not the raw moments themselves.
 
-The first exact identities are
+Because H is even in `sqrt(z)`, its z-expansion has alternating coefficients inherited from the cosine kernel. Writing `h_k=H^(k)(0)`, the first log-derivative coefficients are
 
-`tau_1 = -(m_0 m_2 - m_1^2)/(m_0^2)`;
+`(H'/H)(0)=h_1/h_0`,
 
-`tau_2 = -(m_0^2 m_3 - 3 m_0 m_1 m_2 + 2 m_1^3)/(2 m_0^3)`;
+`(H'/H)'(0)=(h_0h_2-h_1^2)/h_0^2`,
 
-`tau_3 = -(m_0^3 m_4 - 4 m_0^2 m_1 m_3 - 3 m_0^2 m_2^2 + 12 m_0 m_1^2 m_2 - 6 m_1^4)/(6 m_0^4)`.
+`(H'/H)''(0)=(h_0^2h_3-3h_0h_1h_2+2h_1^3)/h_0^3`.
 
-The factorials depend on the chosen indexing convention; the invariant formula is the boxed logarithmic-derivative identity above.
+Therefore the corresponding tau values are exact cumulant polynomials with the signs dictated by the boxed derivative identity, subject to the low-index genus normalization just noted.
 
-This identifies the previous residual wall precisely: it is not an unknown additive error between two equal moment sequences. It is the nonlinear cumulant transform
+This identifies the previous residual wall precisely: it is not an unknown additive error between two equal moment sequences. It is the nonlinear logarithmic/cumulant transform
 
 `{M_k} -> {tau_k}`
 
@@ -96,19 +108,19 @@ does not directly control
 
 `det(tau_{i+j})_{0<=i,j<=3}`.
 
-The latter is a determinant of nonlinear cumulant polynomials in the former Taylor data. Therefore an identity of the naive form
+The latter is a determinant of nonlinear cumulant polynomials in the theta Taylor data. Therefore the naive identity
 
 `det(tau_{i+j}) = Theta_4 + R_4`
 
-is not canonical until the exact cumulant transform is inserted.
+is not canonical until the exact logarithmic transform and all normalization terms are inserted.
 
 The correct proof target is now either:
 
 (A) prove that the theta-generated H belongs to the Laguerre–Pólya class by an RH-independent total-positivity theorem, which would force all zeros of H to be real and hence RH;
 
-(B) prove directly that `F=H'/H` is a Stieltjes/Pick function; or
+(B) prove directly that `F=H'/H` is a Stieltjes/Pick function with poles on the negative real axis; or
 
-(C) prove an all-order sign theorem for the cumulant sequence of H strong enough to imply that every zero of H lies on the negative real axis.
+(C) prove an all-order sign theorem for the logarithmic-derivative/cumulant sequence strong enough to imply that every zero of H lies on the negative real axis.
 
 ## 6. New route: Stieltjes inversion from theta data
 
@@ -116,53 +128,51 @@ If one can prove
 
 `F(z)=H'(z)/H(z) = a + integral_0^infinity dnu(t)/(z+t)`
 
-with `a>=0` and `nu>=0`, then every pole of F is on `(-infinity,0]`. Since poles of F are zeros of H, every zero of H is real nonpositive. Under `H(z)=Xi(i sqrt(z))`, this gives `rho=1/2+i gamma` and RH.
+with `a>=0` and `nu>=0`, then every pole of F is on `(-infinity,0]`. Since poles of F are zeros of H, this gives RH.
 
-Equivalently, it is enough to prove the Pick sign
+Equivalently, the key analytic target is the Pick sign
 
-`Im z>0 => Im F(z)<0`,
+`Im z>0 => Im F(z)<=0`,
 
-plus the standard analyticity and growth conditions needed for the Stieltjes representation.
+plus analyticity/growth conditions sufficient for the Stieltjes representation.
 
 ## 7. Direct theta expression for the Pick numerator
 
-Set `q=sqrt(z)` on the principal branch. Then
+Set `q=sqrt(z)` on a consistent branch. Then
 
-`H(z)=2 integral Phi(u) cosh(qu) du`,
+`H(z)=2 integral Phi(u) cos(u q) du`,
 
-`H'(z)= integral Phi(u) u sinh(qu)/q du`.
+`H'(z)= - integral Phi(u) u sin(u q)/q du`.
 
-Thus
+Therefore
 
 `Im F(z) = Im(H'(z) overline(H(z)))/|H(z)|^2`.
 
-The numerator is exactly
+The numerator is the exact double integral
 
-`Im(H'(z) overline(H(z))) = 2 Im integral integral Phi(u)Phi(v) [u sinh(qu) cosh(overline(q)v)/q] du dv`.
+`Im(H'(z) overline(H(z))) = -2 Im integral integral Phi(u)Phi(v) [u sin(q u) cos(overline(q)v)/q] du dv`.
 
-Antisymmetrization gives the exact kernel
-
-`K_q(u,v) = u sinh(qu)cosh(overline(q)v)/q - v cosh(qu)sinh(overline(q)v)/overline(q)`.
-
-The previous numerical sign audit showed that this pointwise kernel is not sign-definite. Therefore the Pick proof, if true, must come from a global integral identity, modular pairing, or spectral representation—not pointwise positivity.
+After antisymmetrization one obtains a two-variable kernel analogous to Frontier 137. Its pointwise sign is not available from positivity of Phi alone, so any successful Pick proof must use a global modular pairing, spectral representation, or another nonlocal identity.
 
 ## 8. What is genuinely closed here
 
-PROVED:
+PROVED/STRUCTURALLY IDENTIFIED:
 
-1. The theta moments are the Taylor coefficients of the exact entire function H.
-2. The transformed-zero moments tau are exactly the higher Taylor coefficients of H'/H.
-3. The earlier theta-vs-tau residual is therefore a logarithmic/cumulant transform, not an arbitrary unknown remainder.
-4. This bridge is RH-independent.
-5. The four-index theta determinant remains positive, but it is a raw-moment statement and cannot be substituted for the tau determinant.
+1. The correct theta-generated entire function for the zero-location problem is `H(z)=Xi(sqrt(z))`, not `Xi(i sqrt(z))`.
+2. The theta moments are its Taylor coefficients with explicit alternating/factorial normalization.
+3. The transformed-zero moments arise from the higher logarithmic-derivative coefficients of H, with the exact sign relation above after the canonical-product normalization is accounted for.
+4. The earlier theta-vs-tau residual is therefore a nonlinear logarithmic/cumulant transform, not an arbitrary unknown additive error.
+5. The four-index theta determinant remains positive, but it cannot be substituted for the tau determinant.
 
 OPEN:
 
-1. An RH-independent theorem that converts positivity/structure of the theta Taylor data into real-negative zeros of H.
+1. An RH-independent theorem converting the theta Taylor structure into real-negative zeros of H.
 2. The global Pick/Stieltjes inequality.
 3. An all-order total-positivity/Laguerre–Pólya theorem for the Riemann theta kernel.
 4. RH itself.
 
 ## 9. Adversarial conclusion
 
-The exact bridge removes one ambiguity but does not prove RH. Any future argument that simply identifies `M_k` with `tau_k` is invalid. Any argument that treats the cumulant residual as automatically positive is also invalid. The proof-bearing problem has now been reduced to a precise zero-location theorem for the theta-generated entire function H.
+The exact normalization correction is important: zeros `rho=1/2+i gamma` map to `z=-gamma^2`. Any future proof using `H=Xi(i sqrt(z))` as the Stieltjes zero-location variable has the sign reversed and must be corrected.
+
+No RH proof is claimed at this frontier. Any future argument that simply identifies `M_k` with `tau_k`, or assumes the cumulant residual is positive, is invalid until proved.
