@@ -66,3 +66,6 @@ If (i)–(iv) are established, RH follows. At present (i) is exact and unconditi
 
 ## Non-circularity audit
 No claim here proves RH. Any argument that proves cyclicity by assuming nonvanishing of zeta in Re(s)>1/2, positivity of all Li coefficients, reality of Xi zeros, or an unconstructed Hilbert–Polya operator is circular.
+
+## Verification references
+The classical Mellin identity and Nyman–Beurling formulation are documented in Balazard–Saïas, while Báez-Duarte proves the integer-dilate strengthening and states that RH is equivalent to closure of the span of the integer family. The conditional Möbius approximation rate is also explicitly stated in his second version. The Li/Weil equivalence is documented by Bombieri–Lagarias. 
