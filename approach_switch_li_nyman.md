@@ -80,9 +80,18 @@ for some \(c>0\), and proves that **assuming RH** its distance from \(\chi_{(0,1
 \[
 \boxed{\|\chi-G_N^{(c)}\|_2=O\!\big((\log\log N)^{-1/3}\big).}
 \]
-This is an explicit vanishing-error construction, but its theorem is conditional on RH, exactly as stated in Báez-Duarte's paper. citeturn1academia24turn1academia25
+This is an explicit vanishing-error construction, but its theorem is conditional on RH, exactly as stated in Báez-Duarte's paper. citeturn3academia22
 
-The unconditional finite-dimensional sequence \(d_N\) is monotone decreasing and converges to its infimum \(d\), with \(d=0\iff\mathrm{RH}\). Unconditional work instead gives lower bounds; for example, Burnol's refinement yields a liminf lower bound involving multiplicities of zeros on the critical line. Thus the missing direction is still an unconditional upper bound forcing \(d_N\to0\). citeturn0search0
+For comparison, the broader Nyman–Beurling–Báez-Duarte distance can be written on the Mellin side as
+\[
+d_N^2=\inf_{A_N}\frac1{2\pi}\int_{-\infty}^{\infty}\left|1-\zeta\!\left(\frac12+it\right)A_N\!\left(\frac12+it\right)\right|^2\frac{dt}{\frac14+t^2},
+\]
+where \(A_N(s)=\sum_{n\le N}a_n n^{-s}\). Burnol's unconditional lower bound is
+\[
+\liminf_{N\to\infty}d_N^2\log N\ge
+\sum_{\Re\rho=1/2}\frac{m(\rho)^2}{|\rho|^2},
+\]
+so existing unconditional results constrain the possible rate from below rather than forcing convergence to zero. citeturn3search23
 
 ## Exact independent wall
 The two requested attacks now reduce to two sharply stated, non-circular missing inequalities:
