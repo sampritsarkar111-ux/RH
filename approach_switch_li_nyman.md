@@ -54,8 +54,22 @@ Let \(\rho(x)=x-\lfloor x\rfloor\), and use the integer-dilation family
 \[
 \rho_a(x)=\rho\!\left(\frac1{ax}\right),\qquad a\in\mathbb N.
 \]
-Báez-Duarte proved that the RH is equivalent to \(\chi_{(0,1)}\) lying in the \(L^2(0,\infty)\)-closure of the span of these integer dilates. citeturn1academia24turn1academia25
-Hence an explicit sequence \(G_N=\sum_{a\le N}c_{a,N}\rho_a\) with \(\|\chi-G_N\|_2\to0\) would itself prove RH.
+Báez-Duarte proved that RH is equivalent to \(\chi_{(0,1)}\) lying in the \(L^2(0,\infty)\)-closure of the span of these integer dilates. citeturn1academia24turn1academia25
+
+For every finite \(N\), define the exact Gram matrix and target vector
+\[
+G_N=(\langle\rho_a,\rho_b\rangle)_{1\le a,b\le N},\qquad
+q_N=(\langle\chi,\rho_a\rangle)_{1\le a\le N}.
+\]
+The orthogonal projection coefficients are characterized exactly by the normal equations
+\[
+G_Nc_N=q_N,
+\]
+and the minimum squared error is
+\[
+\boxed{d_N^2=\|\chi\|_2^2-q_N^*G_N^{\dagger}q_N=1-q_N^*G_N^{\dagger}q_N,}
+\]
+where \(G_N^{\dagger}\) is the Moore–Penrose inverse (ordinary inverse when the finite family is independent). This is an unconditional exact finite-dimensional reduction. It does **not** imply \(d_N\to0\).
 
 ### Explicit finite approximant benchmark
 Báez-Duarte's second-version result gives the concrete Möbius-weighted candidate
@@ -68,11 +82,7 @@ for some \(c>0\), and proves that **assuming RH** its distance from \(\chi_{(0,1
 \]
 This is an explicit vanishing-error construction, but its theorem is conditional on RH, exactly as stated in Báez-Duarte's paper. citeturn1academia24turn1academia25
 
-The unconditional finite-dimensional quantity is
-\[
-d_N:=\inf_{c_1,\dots,c_N}\left\|\chi_{(0,1)}-\sum_{a=1}^N c_a\rho_a\right\|_2,
-\]
-with \(d_N\downarrow d\), and the criterion gives \(d=0\iff\mathrm{RH}\). Unconditional work instead gives lower bounds; for example, Burnol's refinement yields a liminf lower bound involving multiplicities of zeros on the critical line. Thus the missing direction is still an unconditional upper bound forcing \(d_N\to0\). citeturn0search0
+The unconditional finite-dimensional sequence \(d_N\) is monotone decreasing and converges to its infimum \(d\), with \(d=0\iff\mathrm{RH}\). Unconditional work instead gives lower bounds; for example, Burnol's refinement yields a liminf lower bound involving multiplicities of zeros on the critical line. Thus the missing direction is still an unconditional upper bound forcing \(d_N\to0\). citeturn0search0
 
 ## Exact independent wall
 The two requested attacks now reduce to two sharply stated, non-circular missing inequalities:
@@ -93,7 +103,7 @@ These are not merely computational gaps: each missing statement is strong enough
 ## Immediate execution order
 1. Isolate the exact \(\eta\)-remainder in the Li arithmetic formula and test whether it admits a positive integral/Gram transform.
 2. Construct the corresponding Weil quadratic form and seek an exact PSD factorization of its prime + gamma + archimedean side.
-3. For Nyman–Beurling, derive exact Gram matrices and norm identities for the Möbius-weighted candidate; identify precisely which estimate would make the error bound unconditional.
+3. For Nyman–Beurling, compute/derive exact Gram entries and the projection identity above; then identify an unconditional analytic estimate that forces \(q_N^*G_N^{\dagger}q_N\to1\).
 4. Cross-check any proposed mechanism against both Li positivity and Nyman–Beurling density.
 
 ## Decision rule
