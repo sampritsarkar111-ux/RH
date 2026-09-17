@@ -1,71 +1,82 @@
-# Unconditional positive-Gram attack: corrected decisive wall
+# Unconditional positive-Gram attack: cyclicity wall isolated exactly
 
 ## Main result
-A positive Gram mechanism is already available unconditionally for the finite Nyman–Beurling problem. The real missing ingredient is **cyclicity/density**, not finite-dimensional positivity.
+A positive Gram mechanism is available unconditionally for the finite Nyman–Beurling problem. The remaining cyclicity statement is not an independent auxiliary lemma: in the Hardy-space formulation it is equivalent to the absence of zeros of zeta in the relevant half-plane, and in the critical L2 formulation it is equivalent to RH.
 
 Let rho(x)={x} and rho_a(x)=rho(1/(a x)) on (0,infinity). For 0<Re(s)<1,
 
 M rho_a(s) = -a^{-s} zeta(s)/s.
 
-This is the classical Mellin identity for the fractional-part function. Mellin–Plancherel on Re(s)=1/2 gives, for finite coefficient vectors c,
+Mellin–Plancherel on Re(s)=1/2 gives
 
 || sum_{a<=N} c_a rho_a ||_2^2
- = (1/(2 pi)) integral |zeta(1/2+it)/(1/2+it)|^2 |sum_{a<=N} c_a a^{-1/2-it}|^2 dt >= 0.
+ = (1/(2 pi)) integral |zeta(1/2+it)/(1/2+it)|^2 |sum_{a<=N} c_a a^(-1/2-it)|^2 dt >= 0.
 
-Therefore, defining
+Thus, with
 
-(B_N c)(t) = zeta(1/2+it)/(1/2+it) * sum_{a<=N} c_a a^{-1/2-it},
+(B_N c)(t) = zeta(1/2+it)/(1/2+it) * sum_{a<=N} c_a a^(-1/2-it),
 
-we have the exact factorization
-
-G_N = B_N^* B_N >= 0.
-
-No zero locations and no RH assumption enter this factorization.
+we have the exact finite factorization G_N=B_N^*B_N >= 0, with no RH assumption.
 
 The target chi_(0,1) has Mellin transform 1/s. Hence
 
 d_N^2 = inf_{A_N} (1/(2 pi)) integral |(1-zeta(1/2+it) A_N(1/2+it))/(1/2+it)|^2 dt,
 
-where A_N(s)=sum_{a<=N} c_a a^{-s}.
+where A_N(s)=sum_{a<=N} c_a a^(-s). Therefore
 
-Thus the exact proof target is
+1/s in closure Ran(B_infinity) <=> d_N -> 0.
 
-1/s in closure of Ran(B_infinity),
+Baéz-Duarte's integer-dilate theorem says this closure is equivalent to RH.
 
-equivalently d_N -> 0.
+## Exact Hardy-space obstruction: why cyclicity is the wall
+Passing to the Mellin/Hardy model turns the arithmetic family into the multiplier zeta(s)/s times Dirichlet polynomials. Point evaluation in H2 on a half-plane is bounded.
 
-By the Nyman–Beurling–Báez-Duarte criterion, this density statement is equivalent to RH. So the Gram positivity is not the missing theorem; the missing theorem is an unconditional cyclicity theorem for the target vector.
+Suppose zeta(rho)=0 for some rho with Re(rho)>1/2. Every finite arithmetic multiple
 
-## A second exact finite identity
-The target vector against each integer dilate has the elementary closed form
+F(s)=zeta(s) A_N(s)/s
+
+satisfies F(rho)=0. Therefore every H2-limit of such F also has value 0 at rho. But the target 1/s satisfies 1/rho != 0. Hence the target cannot lie in the closure. Thus
+
+cyclicity of 1/s => zeta has no zero with Re(s)>1/2.
+
+Conversely, the classical Beurling/Nyman theory gives the corresponding density implication from zero-freeness in the relevant half-plane. In the critical L2 formulation, Baéz-Duarte's strengthening gives
+
+1/s in closure Ran(B_infinity) <=> RH.
+
+So an unconditional proof of the requested cyclicity theorem would itself constitute an unconditional proof of RH. It cannot be obtained merely by strengthening finite-dimensional Gram positivity.
+
+## Adjoint formulation
+For the Mellin-side synthesis operator B_infinity,
+
+closure Ran(B_infinity) = (ker B_infinity^*)^perp.
+
+Thus cyclicity is equivalent to triviality of the relevant adjoint kernel. A zero rho with Re(rho)>1/2 yields a bounded point-evaluation obstruction in the Hardy model. Eliminating every such obstruction is therefore exactly the zero-free problem.
+
+## Target-vector coefficients
+The target vector against each integer dilate is explicitly
 
 <chi_(0,1),rho_a> = (log a + 1 - gamma)/a.
 
-Indeed, after u=1/(a x),
-
-<chi,rho_a> = (1/a) integral_{1/a}^infinity {u} u^{-2} du,
-
-and splitting at the positive integers yields the stated expression. Thus q_N is explicitly known; the only genuinely difficult object in the finite projection formula is the Gram geometry, not the target vector.
-
-## Consequence for the Weil route
-A term-by-term positive decomposition of the prime side is not the correct target, because the explicit-formula prime contribution has signed oscillatory terms. The proof-bearing objective must instead be a global exact factorization
-
-Q_W(f)=||T_W f||^2
-
-on the complete admissible test space, followed by an unconditional cyclicity/completeness theorem. A finite-window PSD certificate is insufficient.
-
-## Cross-route target
-Construct one arithmetic positive operator P=T^*T such that
-
-(i) its finite compressions reproduce the Nyman Gram operators,
-(ii) its quadratic form reproduces the full Weil explicit formula,
-(iii) the Li coefficients arise as distinguished finite test vectors, and
-(iv) the relevant target vector is proved cyclic for T without assuming RH.
-
-If (i)–(iv) are established, RH follows. At present (i) is exact and unconditional; (ii)–(iv), especially cyclicity, remain open.
+Thus q_N is completely explicit; the unresolved issue is global completeness of the arithmetic family.
 
 ## Non-circularity audit
-No claim here proves RH. Any argument that proves cyclicity by assuming nonvanishing of zeta in Re(s)>1/2, positivity of all Li coefficients, reality of Xi zeros, or an unconstructed Hilbert–Polya operator is circular.
+The safe exact implications are:
 
-## Verification references
-The classical Mellin identity and Nyman–Beurling formulation are documented in Balazard–Saïas, while Báez-Duarte proves the integer-dilate strengthening and states that RH is equivalent to closure of the span of the integer family. The conditional Möbius approximation rate is also explicitly stated in his second version. The Li/Weil equivalence is documented by Bombieri–Lagarias. 
+finite Gram positivity -> G_N >= 0;
+cyclicity -> d_N -> 0;
+d_N -> 0 <=> RH;
+zeta(rho)=0 with Re(rho)>1/2 -> failure of the corresponding Hardy cyclicity.
+
+A circular proof would assert cyclicity by assuming RH, nonvanishing of zeta throughout Re(s)>1/2, positivity of all Li coefficients, or an unconstructed Hilbert–Polya operator.
+
+## Conclusion
+The requested wall is now isolated exactly:
+
+**the decisive missing theorem is an unconditional proof that 1/s is cyclic for the arithmetic Nyman–Beurling synthesis operator. By Baéz-Duarte, that statement is equivalent to RH.**
+
+Therefore the finite positive-Gram mechanism cannot by itself close the proof. A genuine completion needs a new unconditional argument that excludes all off-line zeros (or an equivalent theorem), rather than only stronger finite-dimensional PSD estimates.
+
+## References
+Balazard–Saïas: classical Mellin identity and Nyman–Beurling formulation.
+Baéz-Duarte (2002): integer-dilate strengthening, RH iff chi_(0,1) belongs to the closed span of rho_a.
+Baéz-Duarte (2003): published strengthening of the Nyman–Beurling criterion.
