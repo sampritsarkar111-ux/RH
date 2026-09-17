@@ -1,87 +1,80 @@
-# RH Frontier 155 — Sign Correction and Exact Cauchy Obstruction — 2026-09-17
+# RH Frontier 155 — Sign Correction and Exact Cauchy Audit — 2026-09-17
 
 ## Status
-OPEN. This frontier corrects the master Stieltjes target and derives an exact unconditional obstruction to the overly rigid constant-plus-Stieltjes ansatz.
+OPEN. This frontier corrects the logarithmic-derivative sign convention and audits the proposed first-order obstruction.
 
-## 1. Correct logarithmic derivative
+## 1. Correct logarithmic derivative convention
 Let
 \[
 \Xi(w)=\xi(1/2+w),\qquad H(z)=\Xi(\sqrt z).
 \]
-If the zeros of H were all on the negative real axis, the pole-bearing logarithmic derivative would have the form
+A useful target, if the pole-bearing part can be isolated, is
 \[
-\boxed{m(z)=\frac{H'(z)}{H(z)}=E'(z)+\int_{[0,\infty)}\frac{d\mu(t)}{z+t},\quad \mu\ge0.}
+\boxed{m(z):=\frac{H'(z)}{H(z)}=E'(z)+\int_{[0,\infty)}\frac{d\mu(t)}{z+t},\qquad \mu\ge0.}
 \]
-The earlier sign choice \(-H'/H\) was incorrect for this convention: a positive Stieltjes resolvent has positive value on the positive axis and negative first derivative.
+For the Stieltjes term, the first derivative on \(x>0\) is non-positive.
 
 ## 2. Theta Taylor data
 Using
 \[
-\Xi(w)=4\int_0^\infty\Phi(u)\cosh(wu)\,du,\qquad \Phi(u)\ge0,
+\Xi(w)=4\int_0^\infty\Phi(u)\cosh(wu)\,du,
+\qquad \Phi(u)\ge0,
 \]
 we have
 \[
 H(z)=4\sum_{k\ge0}\frac{M_{2k}}{(2k)!}z^k,
-\qquad M_r=\int_0^\infty u^r\Phi(u)\,du.
+\qquad M_r=\int_0^\infty u^r\Phi(u)\,du,
 \]
-Therefore
+and therefore
 \[
 h_k:=H^{(k)}(0)=\frac{4k!}{(2k)!}M_{2k}>0.
 \]
 
-## 3. Exact first-order obstruction
-Cauchy-Schwarz for the positive measure \(\Phi(u)du\) gives
+## 3. Exact nonlinear identities
+For \(m=H'/H\),
 \[
-M_2^2\le M_0M_4.
+m(0)=\frac{h_1}{h_0},
 \]
-After the factorial conversion,
-\[
-h_1^2\le \frac{1}{3}h_0h_2.
-\]
-In particular \(h_0h_2-h_1^2>0\). Since
 \[
 m'(0)=\frac{h_0h_2-h_1^2}{h_0^2},
 \]
-we obtain
 \[
-\boxed{m'(0)>0.}
+m''(0)=\frac{h_0^2h_3-3h_0h_1h_2+2h_1^3}{h_0^3}.
 \]
-But a constant-plus-Stieltjes representation
-\[
-m(z)=a+\int_0^\infty\frac{d\mu(t)}{z+t}
-\]
-requires
-\[
-m'(0)=-\int_0^\infty t^{-2}\,d\mu(t)\le0
-\]
-whenever the derivative exists. Hence that ansatz is impossible for the positive-theta representation.
+These are exact and zero-free in their derivation.
 
-## 4. Consequence
-This does NOT disprove RH. It proves that the project must retain a nonconstant entire factor/term \(E'(z)\). The pole-bearing remainder, not the entire logarithmic derivative by itself, is the correct Stieltjes target.
+## 4. Correction: generic Cauchy-Schwarz is NOT enough
+Although
+\[
+M_2^2\le M_0M_4
+\]
+by Cauchy-Schwarz, substitution gives
+\[
+m'(0)=\frac{M_0M_4/3-M_2^2}{M_0^2}.
+\]
+Thus Cauchy-Schwarz alone does **not** determine the sign because the required threshold is \(M_0M_4\gtrless 3M_2^2\), not merely \(M_0M_4\gtrless M_2^2\).
 
-## 5. Next proof-bearing calculation
-Find an independently theta-defined entire function E such that
-\[
-R(z):=\frac{H'(z)}{H(z)}-E'(z)
-\]
-has a Stieltjes representation. The first concrete tests are:
-1. derive E from the Archimedean/theta local asymptotic rather than zeros;
-2. verify \((-1)^nR^{(n)}(x)\ge0\) for all n on x>0;
-3. prove the Pick/Stieltjes analytic continuation of R;
-4. only then build the positive resolvent/determinant bridge.
+Therefore the earlier claimed exact no-go from Cauchy-Schwarz was too strong and is withdrawn. This is an important rigor correction.
 
-## 6. Low-order nonlinear identities
-For arbitrary Taylor data h_k=H^(k)(0),
+## 5. Genuine next calculation
+The first real theta-specific test is
 \[
-m(0)=h_1/h_0,
+\Delta_2:=M_0M_4-3M_2^2.
 \]
+Its sign must be derived from the explicit theta kernel, not from generic moment positivity. The next nonlinear test is
 \[
-m'(0)=(h_0h_2-h_1^2)/h_0^2,
+\Delta_3:=M_0^2M_6-9M_0M_2M_4+12M_2^3.
 \]
+These quantities determine the first nontrivial logarithmic-derivative signs after the factorial normalization.
+
+## 6. Main bridge after the audit
+Regardless of the sign of these raw tests, the proof-bearing target remains
 \[
-m''(0)=(h_0^2h_3-3h_0h_1h_2+2h_1^3)/h_0^3.
+R(z)=\frac{H'(z)}{H(z)}-E'(z)
 \]
-These formulas expose exactly where raw theta moment positivity must be transformed by a genuinely Riemann-specific subtraction E'.
+with E independently constructed from theta/modular data and R admitting a positive Stieltjes representation. No zeros may be used to define E, R, the measure, or an operator.
 
 ## 7. Adversarial checkpoint
-No zero locations are used. No spectral operator is defined from zeros. The result is an exact no-go theorem for one overly rigid Stieltjes normalization and a sharper target for the next attack.
+Any successful closure must be all-order, preserve the nonlinear quotient, justify analytic continuation and growth, and avoid encoding the unknown zero set into the construction.
+
+No RH proof is claimed.
